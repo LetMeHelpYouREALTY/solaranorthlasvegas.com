@@ -17,6 +17,7 @@ export default function PrivacyPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        contentTone="legal"
         breadcrumbCurrent="Privacy"
         h1="Privacy policy"
         lead={`This page describes how ${SITE_NAME} handles information you share through this website. It is not legal advice; consult an attorney for your specific situation.`}

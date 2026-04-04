@@ -4,7 +4,7 @@ import Link from "next/link";
 export function NeighborhoodsHubContent() {
   return (
     <>
-      <section aria-labelledby="areas-heading">
+      <section className="content-panel" aria-labelledby="areas-heading">
         <h2 id="areas-heading">Las Vegas Valley areas</h2>
         <p>
           Each guide is written to help you compare lifestyle, commute, and housing context—not to

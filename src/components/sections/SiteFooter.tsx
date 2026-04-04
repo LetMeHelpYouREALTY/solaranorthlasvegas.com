@@ -27,37 +27,10 @@ export function SiteFooter() {
   const postal = getOptionalPostalAddress();
 
   return (
-    <footer
-      style={{
-        marginTop: "auto",
-        padding: "2rem 1.5rem",
-        borderTop: "1px solid color-mix(in srgb, currentColor 12%, transparent)",
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "42rem",
-          margin: "0 auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.75rem",
-          fontSize: "0.875rem",
-          lineHeight: 1.5,
-          textAlign: "center",
-        }}
-      >
+    <footer className="site-footer">
+      <div className="site-footer-inner">
         <nav aria-label="Footer">
-          <ul
-            style={{
-              margin: "0 0 0.5rem",
-              padding: 0,
-              listStyle: "none",
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem 0.75rem",
-              justifyContent: "center",
-            }}
-          >
+          <ul>
             {FOOTER_NAV.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className="footer-nav-link">

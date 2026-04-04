@@ -18,6 +18,7 @@ export default function DisclaimerPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        contentTone="legal"
         breadcrumbCurrent="Disclaimer"
         h1="Real estate disclaimer"
         lead="Please read the following disclosures. They supplement—not replace—documents you receive in a transaction."

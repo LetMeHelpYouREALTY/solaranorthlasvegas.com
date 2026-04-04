@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import classNames from "classnames";
 
 const WIDGET_HTML =
   '<realscout-office-listings agent-encoded-id="QWdlbnQtMjI1MDUw" sort-order="PRICE_HIGH" listing-status="For Sale" property-types=",SFR" price-min="500000" price-max="900000"></realscout-office-listings>';
@@ -30,45 +31,15 @@ export function RealScoutOfficeListingsSection({
 
   return (
     <section
-      className="realscout-office-listings-section"
+      className={classNames("realscout-office-listings-section", compactTop && "realscout-office-listings-section--compact")}
       aria-labelledby="realscout-office-listings-heading"
-      style={{
-        marginTop: compactTop ? "2rem" : "clamp(3rem, 12vw, 6rem)",
-        paddingBottom: "clamp(2rem, 5vw, 3rem)",
-        width: "100%",
-        maxWidth: "min(1200px, 100%)",
-        marginLeft: "auto",
-        marginRight: "auto",
-        paddingLeft: "1.5rem",
-        paddingRight: "1.5rem",
-        boxSizing: "border-box",
-      }}
     >
-      <h2
-        id="realscout-office-listings-heading"
-        style={{
-          fontSize: "clamp(1.125rem, 2.5vw, 1.35rem)",
-          fontWeight: 700,
-          margin: "0 0 0.75rem",
-          lineHeight: 1.25,
-        }}
-      >
-        Featured listings for sale
-      </h2>
-      <p
-        style={{
-          margin: "0 0 1.25rem",
-          fontSize: "0.875rem",
-          lineHeight: 1.5,
-          opacity: 0.88,
-          maxWidth: "42rem",
-        }}
-      >
-        Listing details are provided by participating brokers and the MLS through RealScout. Not
-        intended as solicitation where your jurisdiction prohibits it. Confirm status, price, and
-        terms with a licensed professional.
-      </p>
-      <div ref={ref} className="realscout-office-listings-root" />
+      <div className="realscout-section-shell">
+        <h2 id="realscout-office-listings-heading" className="v0-section-heading">
+          Featured listings for sale
+        </h2>
+        <div ref={ref} className="realscout-office-listings-root" />
+      </div>
     </section>
   );
 }

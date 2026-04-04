@@ -21,12 +21,13 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Flex
+        className="site-header-inner"
         fillWidth
         horizontal="between"
         vertical="center"
         paddingX="20"
         paddingY="12"
-        style={{ maxWidth: "56rem", margin: "0 auto", flexWrap: "wrap", gap: "0.75rem" }}
+        style={{ flexWrap: "wrap", gap: "0.75rem" }}
       >
         <Link href="/" style={{ textDecoration: "none", fontWeight: 700 }}>
           <Text variant="body-default-s">{SITE_NAME}</Text>

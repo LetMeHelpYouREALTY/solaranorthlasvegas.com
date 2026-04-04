@@ -34,7 +34,7 @@ export default function ContactPage() {
         h1="Contact Dr. Jan Duffy"
         lead="Reach out by email for buying, selling, or new construction questions in North Las Vegas and the Las Vegas Valley."
       >
-        <section aria-labelledby="email-heading">
+        <section className="content-panel" aria-labelledby="email-heading">
           <h2 id="email-heading">Email</h2>
           <p>
             <strong>Primary:</strong>{" "}
@@ -50,7 +50,7 @@ export default function ContactPage() {
           </p>
         </section>
         {phone ? (
-          <section aria-labelledby="phone-heading">
+          <section className="content-panel" aria-labelledby="phone-heading">
             <h2 id="phone-heading">Phone</h2>
             <p>
               <a href={`tel:${phone.replace(/\s/g, "")}`}>{phone}</a>
@@ -58,7 +58,7 @@ export default function ContactPage() {
           </section>
         ) : null}
         {postal ? (
-          <section aria-labelledby="office-heading">
+          <section className="content-panel" aria-labelledby="office-heading">
             <h2 id="office-heading">Office mailing address</h2>
             <p>{formatPostalAddressLine(postal)}</p>
             <p style={{ fontSize: "0.9rem", opacity: 0.85 }}>
@@ -66,7 +66,7 @@ export default function ContactPage() {
             </p>
           </section>
         ) : null}
-        <section aria-labelledby="license-heading">
+        <section className="content-panel" aria-labelledby="license-heading">
           <h2 id="license-heading">License</h2>
           <p>
             {AGENT.fullName} · Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}

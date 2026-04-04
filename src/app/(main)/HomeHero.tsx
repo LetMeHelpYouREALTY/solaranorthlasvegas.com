@@ -9,75 +9,85 @@ export function HomeHero() {
   const mailPrimary = `mailto:${CONTACT_EMAILS.drDuffy}`;
 
   return (
-    <Column as="main" id="page-top" fillWidth padding="0" style={{ minHeight: "70vh" }}>
+    <Column as="main" id="page-top" fillWidth padding="0" className="home-hero-stack">
       <SiteHeader />
       <Column fillWidth center padding="l" style={{ flex: 1 }}>
-        <Column maxWidth="s" horizontal="center" gap="l" align="center">
-          <Badge
-            textVariant="code-default-s"
-            border="neutral-alpha-medium"
-            onBackground="neutral-medium"
-            vertical="center"
-            gap="16"
-          >
-            <Logo dark icon="/trademarks/wordmark-dark.svg" href={SITE_ORIGIN} size="xs" />
-            <Logo light icon="/trademarks/wordmark-light.svg" href={SITE_ORIGIN} size="xs" />
-            <Line vert background="neutral-alpha-strong" />
-            <Text marginX="4">{SITE_NAME}</Text>
-          </Badge>
-          <Heading as="h1" variant="display-strong-xl" marginTop="24">
-            North Las Vegas real estate with Dr. Jan Duffy
-          </Heading>
-          <Text
-            variant="heading-default-xl"
-            onBackground="neutral-weak"
-            wrap="balance"
-            marginBottom="8"
-          >
-            Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and
-            strategy with Berkshire Hathaway HomeServices Nevada Properties.
-          </Text>
-          <Text
-            variant="body-default-s"
-            onBackground="neutral-weak"
-            marginBottom="16"
-            wrap="balance"
-          >
-            Explore{" "}
-            <Link href="/solara" style={{ textDecoration: "underline", fontWeight: 600 }}>
-              Solara new construction in North Las Vegas
-            </Link>{" "}
-            (Lennar community overview + independent REALTOR guidance).
-          </Text>
-          <Column horizontal="center" gap="8">
-            <Button
-              id="email-primary"
-              href={mailPrimary}
-              data-border="rounded"
-              weight="default"
-              arrowIcon
+        <div className="home-hero-surface">
+          <Column maxWidth="s" horizontal="center" gap="l" align="center">
+            <Badge
+              textVariant="code-default-s"
+              border="neutral-alpha-medium"
+              onBackground="neutral-medium"
+              vertical="center"
+              gap="16"
             >
-              Email Dr. Jan Duffy
-            </Button>
-            <Button
-              id="neighborhoods-cta"
-              href="/neighborhoods"
-              data-border="rounded"
-              weight="default"
+              <Logo dark icon="/trademarks/wordmark-dark.svg" href={SITE_ORIGIN} size="xs" />
+              <Logo light icon="/trademarks/wordmark-light.svg" href={SITE_ORIGIN} size="xs" />
+              <Line vert background="neutral-alpha-strong" />
+              <Text marginX="4">{SITE_NAME}</Text>
+            </Badge>
+            <Heading as="h1" variant="display-strong-xl" marginTop="24">
+              North Las Vegas real estate with Dr. Jan Duffy
+            </Heading>
+            <Text
+              variant="heading-default-xl"
+              onBackground="neutral-weak"
+              wrap="balance"
+              marginBottom="8"
             >
-              Explore neighborhoods
-            </Button>
+              Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and
+              strategy with Berkshire Hathaway HomeServices Nevada Properties.
+            </Text>
+            <Text
+              variant="body-default-s"
+              onBackground="neutral-weak"
+              marginBottom="16"
+              wrap="balance"
+            >
+              Explore{" "}
+              <Link href="/solara" style={{ textDecoration: "underline", fontWeight: 600 }}>
+                Solara new construction in North Las Vegas
+              </Link>{" "}
+              (Lennar community overview + independent REALTOR guidance).
+            </Text>
+            <div className="home-hero-cta-group">
+              <Button
+                id="email-primary"
+                href={mailPrimary}
+                data-border="rounded"
+                weight="default"
+                arrowIcon
+              >
+                Email Dr. Jan Duffy
+              </Button>
+              <Button
+                id="contact-cta"
+                href="/contact"
+                data-border="rounded"
+                weight="default"
+              >
+                Contact
+              </Button>
+              <Button
+                id="neighborhoods-cta"
+                href="/neighborhoods"
+                data-border="rounded"
+                weight="default"
+              >
+                Neighborhoods
+              </Button>
+            </div>
+            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="4" wrap="balance">
+              Listings support:{" "}
+              <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`} style={{ fontWeight: 600 }}>
+                {CONTACT_EMAILS.drDuffySells}
+              </a>
+            </Text>
+            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="12" wrap="balance">
+              Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
+            </Text>
           </Column>
-          <Text variant="body-default-s" onBackground="neutral-weak" marginTop="4" wrap="balance">
-            Listings support:{" "}
-            <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`} style={{ fontWeight: 600 }}>
-              {CONTACT_EMAILS.drDuffySells}
-            </a>
-          </Text>
-          <Text variant="body-default-s" onBackground="neutral-weak" marginTop="12" wrap="balance">
-            Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
-          </Text>
-        </Column>
+        </div>
       </Column>
     </Column>
   );

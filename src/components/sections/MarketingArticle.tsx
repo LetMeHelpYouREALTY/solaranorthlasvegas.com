@@ -1,5 +1,6 @@
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import { SITE_NAME } from "@/lib/site-contact";
+import classNames from "classnames";
 import Link from "next/link";
 
 type MarketingArticleProps = {
@@ -9,6 +10,8 @@ type MarketingArticleProps = {
   h1: string;
   lead?: string;
   children: React.ReactNode;
+  /** Narrower measure and spacing for long policy-style pages */
+  contentTone?: "default" | "legal";
 };
 
 /**
@@ -20,37 +23,38 @@ export function MarketingArticle({
   h1,
   lead,
   children,
+  contentTone = "default",
 }: MarketingArticleProps) {
   return (
-    <main id="page-top" className="marketing-prose marketing-page-main">
-      <nav aria-label="Breadcrumb" style={{ fontSize: "0.875rem", marginBottom: "1.5rem" }}>
-        <ol
-          style={{
-            margin: 0,
-            padding: 0,
-            listStyle: "none",
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "0.35rem",
-          }}
-        >
-          <li>
-            <Link href="/">{SITE_NAME}</Link>
-          </li>
-          <li aria-hidden="true">/</li>
-          {breadcrumbMiddle ? (
-            <>
-              <li>
-                <Link href={breadcrumbMiddle.href}>{breadcrumbMiddle.label}</Link>
-              </li>
-              <li aria-hidden="true">/</li>
-            </>
-          ) : null}
-          <li>{breadcrumbCurrent}</li>
-        </ol>
-      </nav>
-      <h1 className="marketing-page-h1">{h1}</h1>
-      {lead ? <p className="marketing-lead">{lead}</p> : null}
+    <main
+      id="page-top"
+      className={classNames(
+        "marketing-prose",
+        "marketing-page-main",
+        contentTone === "legal" && "marketing-page-main--legal",
+      )}
+    >
+      <div className="marketing-intro-band">
+        <nav className="marketing-breadcrumb" aria-label="Breadcrumb">
+          <ol>
+            <li>
+              <Link href="/">{SITE_NAME}</Link>
+            </li>
+            <li aria-hidden="true">/</li>
+            {breadcrumbMiddle ? (
+              <>
+                <li>
+                  <Link href={breadcrumbMiddle.href}>{breadcrumbMiddle.label}</Link>
+                </li>
+                <li aria-hidden="true">/</li>
+              </>
+            ) : null}
+            <li>{breadcrumbCurrent}</li>
+          </ol>
+        </nav>
+        <h1 className="marketing-page-h1">{h1}</h1>
+        {lead ? <p className="marketing-lead">{lead}</p> : null}
+      </div>
       <RealScoutOfficeListingsSection />
       {children}
     </main>
