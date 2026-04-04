@@ -25,7 +25,7 @@ alwaysApply: false
 - **Canonical**: `SITE_ORIGIN` in `src/lib/site-contact.ts` must match **Search Console**, **sitemap**, **robots `Sitemap:`**, and **`metadataBase`**.
 - **Helpers**: Use `getCanonicalUrl()` from `src/lib/metadata.ts` for sitemap entries and JSON-LD `url` / `@id` where applicable.
 - **Schema**: Edit structured data in `src/lib/schema.ts` only; do not scatter one-off JSON-LD. Pair **FAQPage** with the same visible FAQ as `HomeFaq` + `HomeFaqJsonLd` (home) or `SolaraFaq` + `SolaraFaqJsonLd` (`/solara` only).
-- **Lennar**: `/solara` must clearly attribute the **builder** and link to the official Lennar URL from `solara-page.ts`; no guaranteed list prices without a refresh policy.
+- **Solara / search**: `/solara` must attribute the **community** factually. Client **home search** and **onboarding** links come from `DR_JAN_CLIENT_SEARCH_URL` and `DR_JAN_CLIENT_ONBOARDING_URL` in `solara-page.ts`. Builder-specific pricing/hours are confirmed with the builder, not implied by those links.
 - **NAP**: Phone and `sameAs` only via documented env vars; must match **GBP** before enabling.
 - **IDX**: Do not change `components/idx/*` without explicit approval.
 

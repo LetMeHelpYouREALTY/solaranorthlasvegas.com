@@ -12,8 +12,8 @@ type RealScoutOfficeListingsSectionProps = {
 };
 
 /**
- * RealScout office listings web component. Script is loaded once in root layout.
- * Markup is injected client-side so the custom element can upgrade after the module loads.
+ * Third-party homes-for-sale widget (custom element). Script is loaded once in root layout.
+ * Markup is injected client-side so the element can register after the module loads.
  */
 export function RealScoutOfficeListingsSection({
   compactTop = false,
@@ -36,7 +36,7 @@ export function RealScoutOfficeListingsSection({
     >
       <div className="realscout-section-shell">
         <h2 id="realscout-office-listings-heading" className="v0-section-heading">
-          Featured listings for sale
+          Homes for sale
         </h2>
         <div ref={ref} className="realscout-office-listings-root" />
       </div>

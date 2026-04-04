@@ -484,7 +484,7 @@ html {
   min-height: 120px;
 }
 
-/* RealScout web components (script loaded once in root layout) */
+/* Third-party homes-for-sale widget (custom element; script in root layout) */
 realscout-office-listings {
   --rs-listing-divider-color: #c5a35a;
   width: 100%;

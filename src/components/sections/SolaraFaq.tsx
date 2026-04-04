@@ -4,7 +4,7 @@ export function SolaraFaq() {
   return (
     <section className="aeo-faq-section" aria-labelledby="solara-faq-heading">
       <h2 id="solara-faq-heading" className="v0-section-heading">
-        Solara &amp; new construction FAQs
+        Questions about working with Dr. Jan Duffy &amp; new construction
       </h2>
       <div className="aeo-faq-list">
         {SOLARA_FAQ_ITEMS.map((item) => (

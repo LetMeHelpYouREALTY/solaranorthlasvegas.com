@@ -4,7 +4,7 @@ import type { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
-    short_name: "Solara NLV",
+    short_name: "Dr. Jan NLV",
     description:
       "North Las Vegas real estate with Dr. Jan Duffy — Berkshire Hathaway HomeServices Nevada Properties.",
     start_url: "/",

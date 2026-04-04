@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Solara new construction — North Las Vegas";
+export const alt = "Dr. Jan Duffy — North Las Vegas REALTOR, new construction guidance";
 
 export const size = {
   width: 1200,
@@ -21,27 +21,27 @@ export default function SolaraOpenGraphImage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(145deg, #1e293b 0%, #0f766e 50%, #134e4a 100%)",
-        color: "#f0fdfa",
+        background: "linear-gradient(145deg, #1e293b 0%, #1e3a8a 50%, #172554 100%)",
+        color: "#f8fafc",
         padding: 48,
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <div style={{ fontSize: 52, fontWeight: 700, textAlign: "center", lineHeight: 1.15 }}>
-        Solara · North Las Vegas
+      <div style={{ fontSize: 48, fontWeight: 700, textAlign: "center", lineHeight: 1.2 }}>
+        Dr. Jan Duffy — North Las Vegas REALTOR®
       </div>
       <div
         style={{
-          marginTop: 18,
-          fontSize: 26,
+          marginTop: 20,
+          fontSize: 28,
           fontWeight: 500,
-          opacity: 0.9,
+          opacity: 0.92,
           textAlign: "center",
           maxWidth: 920,
           lineHeight: 1.4,
         }}
       >
-        Lennar new-home townhomes — verify pricing on Lennar.com
+        New construction &amp; resale guidance — including the Solara area
       </div>
     </div>,
     { ...size },

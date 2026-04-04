@@ -37,7 +37,7 @@ export default function NeighborhoodsHubPage() {
             {" · "}
             <Link href="/contact">Contact</Link>
             {" · "}
-            <Link href="/solara">Solara new construction</Link>
+            <Link href="/solara">Dr. Jan — new construction (Solara)</Link>
           </p>
         </section>
       </MarketingArticle>

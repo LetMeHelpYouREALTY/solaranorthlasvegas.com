@@ -20,7 +20,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "north-las-vegas",
     shortName: "North Las Vegas",
-    schemaTitle: "North Las Vegas homes & real estate | Solara North Las Vegas",
+    schemaTitle: "North Las Vegas homes & real estate | Dr. Jan Duffy",
     schemaDescription:
       "North Las Vegas real estate context, new construction near Solara, and buyer/seller guidance with Dr. Jan Duffy.",
     pageTitleAbsolute: "North Las Vegas homes & real estate",
@@ -36,7 +36,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "aliante",
     shortName: "Aliante",
-    schemaTitle: "Aliante North Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Aliante North Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Aliante area overview for North Las Vegas buyers and sellers working with Dr. Jan Duffy, REALTOR.",
     pageTitleAbsolute: "Aliante, North Las Vegas homes",
@@ -52,7 +52,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "centennial-hills",
     shortName: "Centennial Hills",
-    schemaTitle: "Centennial Hills Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Centennial Hills Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Centennial Hills area notes for Las Vegas Valley buyers and sellers with Dr. Jan Duffy.",
     pageTitleAbsolute: "Centennial Hills, Las Vegas homes",
@@ -68,7 +68,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "shadow-creek",
     shortName: "Shadow Creek",
-    schemaTitle: "Shadow Creek North Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Shadow Creek North Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Shadow Creek area overview for North Las Vegas real estate clients of Dr. Jan Duffy.",
     pageTitleAbsolute: "Shadow Creek, North Las Vegas homes",
@@ -84,7 +84,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "skye-canyon",
     shortName: "Skye Canyon",
-    schemaTitle: "Skye Canyon Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Skye Canyon Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Skye Canyon master plan context for northwest Las Vegas Valley buyers and sellers.",
     pageTitleAbsolute: "Skye Canyon, Las Vegas homes",
@@ -100,7 +100,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "providence",
     shortName: "Providence",
-    schemaTitle: "Providence Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Providence Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Providence master-planned community notes for Las Vegas Valley real estate clients.",
     pageTitleAbsolute: "Providence, Las Vegas homes",
@@ -116,7 +116,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "henderson",
     shortName: "Henderson",
-    schemaTitle: "Henderson NV homes & real estate | Solara North Las Vegas",
+    schemaTitle: "Henderson NV homes & real estate | Dr. Jan Duffy",
     schemaDescription:
       "Henderson real estate context for Las Vegas Valley buyers and sellers with Dr. Jan Duffy.",
     pageTitleAbsolute: "Henderson, Nevada homes & real estate",
@@ -132,7 +132,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "summerlin",
     shortName: "Summerlin",
-    schemaTitle: "Summerlin Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Summerlin Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Summerlin area notes for Las Vegas Valley buyers and sellers planning a purchase or sale.",
     pageTitleAbsolute: "Summerlin, Las Vegas homes",
@@ -148,7 +148,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "spring-valley",
     shortName: "Spring Valley",
-    schemaTitle: "Spring Valley Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Spring Valley Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Spring Valley area overview for central Las Vegas Valley buyers and sellers.",
     pageTitleAbsolute: "Spring Valley, Las Vegas homes",
@@ -164,7 +164,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "enterprise",
     shortName: "Enterprise",
-    schemaTitle: "Enterprise Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Enterprise Las Vegas homes | Dr. Jan Duffy",
     schemaDescription: "Enterprise area notes for southwest Las Vegas Valley buyers and sellers.",
     pageTitleAbsolute: "Enterprise, Las Vegas homes",
     pageDescription:
@@ -179,7 +179,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "paradise",
     shortName: "Paradise",
-    schemaTitle: "Paradise Las Vegas homes | Solara North Las Vegas",
+    schemaTitle: "Paradise Las Vegas homes | Dr. Jan Duffy",
     schemaDescription:
       "Paradise (unincorporated Clark County) area context for Las Vegas Valley real estate.",
     pageTitleAbsolute: "Paradise, Las Vegas area homes",
@@ -195,7 +195,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
   {
     slug: "boulder-city",
     shortName: "Boulder City",
-    schemaTitle: "Boulder City NV homes | Solara North Las Vegas",
+    schemaTitle: "Boulder City NV homes | Dr. Jan Duffy",
     schemaDescription:
       "Boulder City real estate context for buyers and sellers comparing valley-adjacent options.",
     pageTitleAbsolute: "Boulder City, Nevada homes",

@@ -31,7 +31,7 @@ const STATIC_ROUTES: Record<string, WebPageSchemaFields> = {
   "/contact": {
     title: "Contact Dr. Jan Duffy | Solara North Las Vegas",
     description:
-      "Contact Dr. Jan Duffy for North Las Vegas and Las Vegas Valley real estate questions, Solara new construction guidance, and listing support.",
+      "Contact Dr. Jan Duffy for North Las Vegas and Las Vegas Valley real estate—buying, selling, and new construction questions.",
     path: "/contact",
   },
   "/buyers": {
@@ -55,13 +55,13 @@ const STATIC_ROUTES: Record<string, WebPageSchemaFields> = {
   "/disclaimer": {
     title: "Real estate disclaimer | Solara North Las Vegas",
     description:
-      "MLS, brokerage, and general real estate disclaimers for Solara North Las Vegas and Dr. Jan Duffy.",
+      "Listing information, brokerage, and general real estate disclaimers for Solara North Las Vegas and Dr. Jan Duffy.",
     path: "/disclaimer",
   },
   "/search": {
-    title: "Search homes — request MLS access | Solara North Las Vegas",
+    title: "Search homes — Dr. Jan Duffy | Solara North Las Vegas",
     description:
-      "Request a curated home search in North Las Vegas and the Las Vegas Valley with Dr. Jan Duffy.",
+      "Get help finding homes in North Las Vegas and the Las Vegas Valley—email Dr. Jan Duffy with your criteria.",
     path: "/search",
   },
   "/home-value": {

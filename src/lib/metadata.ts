@@ -141,8 +141,8 @@ export function buildSubpageMetadata(input: {
 }): Metadata {
   const canonical = getCanonicalUrl(input.path);
   const keywords = input.keywords ?? [
-    "Solara North Las Vegas",
-    "Lennar Solara",
+    "Dr. Jan Duffy REALTOR",
+    "North Las Vegas real estate",
     "new construction North Las Vegas",
     "North Las Vegas townhomes",
     SITE_HOSTNAME,

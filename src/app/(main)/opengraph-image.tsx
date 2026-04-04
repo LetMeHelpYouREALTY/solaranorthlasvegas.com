@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 
-export const alt = "Solara North Las Vegas — Dr. Jan Duffy";
+export const alt = "Dr. Jan Duffy — North Las Vegas & Las Vegas Valley real estate";
 
 export const size = {
   width: 1200,
@@ -27,8 +27,8 @@ export default function OpenGraphImage() {
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <div style={{ fontSize: 56, fontWeight: 700, textAlign: "center", lineHeight: 1.15 }}>
-        Solara North Las Vegas
+      <div style={{ fontSize: 52, fontWeight: 700, textAlign: "center", lineHeight: 1.15 }}>
+        Dr. Jan Duffy — REALTOR®
       </div>
       <div
         style={{
@@ -41,7 +41,7 @@ export default function OpenGraphImage() {
           lineHeight: 1.35,
         }}
       >
-        North Las Vegas &amp; Las Vegas Valley real estate · Dr. Jan Duffy
+        North Las Vegas &amp; Las Vegas Valley · buying, selling &amp; new construction
       </div>
     </div>,
     { ...size },

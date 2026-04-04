@@ -37,12 +37,13 @@ export default function AboutPage() {
           </p>
         </section>
         <section aria-labelledby="solara-heading">
-          <h2 id="solara-heading">Solara and new construction</h2>
+          <h2 id="solara-heading">New construction (Solara area)</h2>
           <p>
-            This site includes an educational overview of{" "}
-            <Link href="/solara">Solara (Lennar)</Link> in North Las Vegas. Builder pricing and
-            availability are always confirmed on Lennar’s official site; I can help you interpret
-            how new construction fits your timeline and financing plan.
+            I help buyers and sellers think through new construction—not just resale. If you are
+            looking at the{" "}
+            <Link href="/solara">Solara</Link> area in North Las Vegas, I can explain how independent
+            representation works alongside the builder’s process. Official pricing and availability
+            always come from the builder’s website.
           </p>
         </section>
         <section aria-labelledby="contact-heading">

@@ -8,9 +8,9 @@ import Link from "next/link";
 export async function generateMetadata(): Promise<Metadata> {
   return buildSubpageMetadata({
     titleAbsolute: "Real estate disclaimer",
-    description: `MLS, brokerage, and general disclaimers for ${SITE_NAME} and ${AGENT.fullName}.`,
+    description: `Listing information, brokerage, and general disclaimers for ${SITE_NAME} and ${AGENT.fullName}.`,
     path: "/disclaimer",
-    keywords: ["real estate disclaimer", "MLS disclaimer", SITE_HOSTNAME],
+    keywords: ["real estate disclaimer", "listing information", SITE_HOSTNAME],
   });
 }
 
@@ -31,13 +31,13 @@ export default function DisclaimerPage() {
             professionals for advice tailored to your situation.
           </p>
         </section>
-        <section aria-labelledby="mls-heading">
-          <h2 id="mls-heading">MLS and listing data</h2>
+        <section aria-labelledby="listing-info-heading">
+          <h2 id="listing-info-heading">Homes for sale information</h2>
           <p>
-            Listing information may come from IDX feeds or third parties and may change without
-            notice. Photos, square footage, HOA fees, and status should be verified. The listing
-            broker/brokerage and MLS attribution shown on IDX pages govern display of MLS data—see
-            your MLS provider’s rules and the disclaimer on search results where IDX is enabled.
+            Details about homes for sale may come from participating brokers, listing services, or
+            other sources and can change without notice. Photos, square footage, HOA fees, and
+            status should be verified with a licensed professional. Where this site shows search
+            results or listing tools, follow the attribution and rules shown there.
           </p>
         </section>
         <section aria-labelledby="agency-heading">
@@ -51,9 +51,9 @@ export default function DisclaimerPage() {
         <section aria-labelledby="builder-heading">
           <h2 id="builder-heading">New construction</h2>
           <p>
-            Builder communities (including <Link href="/solara">Solara / Lennar</Link>) are
-            described for orientation only. Builder pricing, incentives, and availability are
-            controlled by the builder.
+            Builder communities (including <Link href="/solara">Solara</Link>) are described for
+            orientation only. Builder pricing, incentives, and availability are controlled by the
+            builder.
           </p>
         </section>
         <section aria-labelledby="fair-heading">

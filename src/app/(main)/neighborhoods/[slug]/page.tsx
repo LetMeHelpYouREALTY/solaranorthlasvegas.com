@@ -55,6 +55,8 @@ export default async function NeighborhoodPage({ params }: Props) {
             <Link href="/buyers">Buyer roadmap</Link>
             {" · "}
             <Link href="/sellers">Seller roadmap</Link>
+            {" · "}
+            <Link href="/solara">New construction (Solara area)</Link>
           </p>
         </section>
       </MarketingArticle>

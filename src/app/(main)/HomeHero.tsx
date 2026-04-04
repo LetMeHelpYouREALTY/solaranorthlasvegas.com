@@ -44,11 +44,12 @@ export function HomeHero() {
               marginBottom="16"
               wrap="balance"
             >
-              Explore{" "}
+              Curious about{" "}
               <Link href="/solara" style={{ textDecoration: "underline", fontWeight: 600 }}>
-                Solara new construction in North Las Vegas
-              </Link>{" "}
-              (Lennar community overview + independent REALTOR guidance).
+                new construction in North Las Vegas (including the Solara area)
+              </Link>
+              ? Dr. Jan Duffy can walk you through what to expect—separate from the builder’s sales
+              team.
             </Text>
             <div className="home-hero-cta-group">
               <Button

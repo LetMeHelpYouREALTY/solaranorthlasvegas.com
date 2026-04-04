@@ -17,7 +17,8 @@ export default function NotFound() {
     >
       <h1 style={{ fontSize: "1.5rem", fontWeight: 700, margin: "0 0 0.75rem" }}>Page not found</h1>
       <p style={{ margin: "0 0 1.25rem", lineHeight: 1.55, opacity: 0.9 }}>
-        That URL does not exist on {SITE_NAME}. Try the home page or the Solara community overview.
+        That URL does not exist on {SITE_NAME}. Try the home page, contact Dr. Jan Duffy, or browse
+        neighborhoods.
       </p>
       <p
         style={{
@@ -35,7 +36,7 @@ export default function NotFound() {
           ·
         </span>
         <Link href="/solara" style={{ fontWeight: 600 }}>
-          Solara (North Las Vegas)
+          New construction help
         </Link>
         <span aria-hidden="true" style={{ opacity: 0.4 }}>
           ·

@@ -17,7 +17,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildSubpageMetadata({
     titleAbsolute: "Contact Dr. Jan Duffy",
     description:
-      "Email Dr. Jan Duffy for North Las Vegas and Las Vegas Valley real estate—buying, selling, and Solara new construction questions.",
+      "Email Dr. Jan Duffy for North Las Vegas and Las Vegas Valley real estate—buying, selling, and questions about new construction.",
     path: "/contact",
     keywords: ["contact North Las Vegas REALTOR", PRIMARY_CONTACT_EMAIL, SITE_HOSTNAME],
   });
@@ -79,7 +79,7 @@ export default function ContactPage() {
             {" · "}
             <Link href="/neighborhoods">Neighborhood guides</Link>
             {" · "}
-            <Link href="/solara">Solara overview</Link>
+            <Link href="/solara">New construction (Solara)</Link>
           </p>
         </section>
       </MarketingArticle>

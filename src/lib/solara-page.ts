@@ -1,10 +1,12 @@
 import { SITE_NAME } from "@/lib/site-contact";
 
-/** Official Lennar listing — source of truth for pricing, hours, inventory */
-export const LENNAR_SOLARA_OFFICIAL_URL =
-  "https://www.lennar.com/new-homes/nevada/las-vegas/north-las-vegas/solara" as const;
+/** Dr. Jan Duffy — client home search (preview in an incognito window for the new-client experience) */
+export const DR_JAN_CLIENT_SEARCH_URL = "https://drjanduffy.realscout.com/" as const;
 
-/** Lennar welcome center (public hours/visits: by appointment per builder) */
+/** Prospect onboarding — invite to create their own search */
+export const DR_JAN_CLIENT_ONBOARDING_URL = "https://drjanduffy.realscout.com/onboarding" as const;
+
+/** Builder welcome center (public hours/visits: by appointment per builder) */
 export const SOLARA_WELCOME_ADDRESS = {
   streetAddress: "212 Summer Park Ave",
   addressLocality: "North Las Vegas",
@@ -22,12 +24,12 @@ export function formatSolaraWelcomeAddressLine(): string {
 export const SOLARA_CONTENT_REVIEWED_ON = "2026-04-03" as const;
 
 export const SOLARA_PAGE_TITLE_ABSOLUTE =
-  `Solara New Construction Townhomes, North Las Vegas | ${SITE_NAME}` as const;
+  `Dr. Jan Duffy — New construction & North Las Vegas homes (Solara) | ${SITE_NAME}` as const;
 
 export const SOLARA_PAGE_DESCRIPTION =
-  "Solara is a Lennar new-home community of gated townhomes in North Las Vegas, NV. Confirm current pricing, floorplans, and tours on Lennar’s official page. Dr. Jan Duffy can advise buyers and sellers independently.";
+  "Work with Dr. Jan Duffy, REALTOR®, for buyer and seller guidance in North Las Vegas—including the Solara townhome area. Search homes on her client search page or start onboarding to build your own search. Berkshire Hathaway HomeServices Nevada Properties.";
 
-export const SOLARA_SCHEMA_TITLE = "Solara new construction in North Las Vegas";
+export const SOLARA_SCHEMA_TITLE = "Dr. Jan Duffy — New construction guidance (Solara area, North Las Vegas)";
 
 export const SOLARA_SCHEMA_DESCRIPTION =
-  "Lennar new-home community in North Las Vegas. Independent real estate guidance from Dr. Jan Duffy; verify builder pricing and availability on Lennar.com.";
+  "Independent real estate services from Dr. Jan Duffy in North Las Vegas. Solara is a local new-build community; search homes via her client search page.";
