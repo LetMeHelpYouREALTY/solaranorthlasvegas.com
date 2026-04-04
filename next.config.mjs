@@ -8,6 +8,7 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   async headers() {
+    const longCache = "public, max-age=31536000, immutable";
     return [
       {
         source: "/:path*",
@@ -20,6 +21,22 @@ const nextConfig = {
             value: "camera=(), microphone=(), geolocation=()",
           },
         ],
+      },
+      {
+        source: "/_next/static/:path*",
+        headers: [{ key: "Cache-Control", value: longCache }],
+      },
+      {
+        source: "/icons/:path*",
+        headers: [{ key: "Cache-Control", value: longCache }],
+      },
+      {
+        source: "/trademarks/:path*",
+        headers: [{ key: "Cache-Control", value: longCache }],
+      },
+      {
+        source: "/images/:path*",
+        headers: [{ key: "Cache-Control", value: longCache }],
       },
     ];
   },

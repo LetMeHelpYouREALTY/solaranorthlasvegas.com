@@ -44,7 +44,26 @@ export default function RootLayout({
     >
       <DynamicSchema />
       <head>
-        <link href={CALENDLY_WIDGET_CSS} rel="stylesheet" />
+        <link rel="preconnect" href="https://em.realscout.com" crossOrigin="" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
+        <script
+          id="calendly-widget-css-loader"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){
+              var href=${JSON.stringify(CALENDLY_WIDGET_CSS)};
+              if(document.getElementById("calendly-widget-css"))return;
+              var l=document.createElement("link");
+              l.id="calendly-widget-css";
+              l.rel="stylesheet";
+              l.href=href;
+              l.media="print";
+              l.onload=function(){l.media="all"};
+              document.head.appendChild(l);
+              setTimeout(function(){if(l.media==="print")l.media="all"},3000);
+            })();`,
+          }}
+        />
         <SiteJsonLd />
         <script
           id="theme-init"
@@ -107,11 +126,6 @@ export default function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth margin="0" padding="0">
-          <Script
-            src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
-            strategy="afterInteractive"
-            type="module"
-          />
           <Script src={CALENDLY_WIDGET_JS} strategy="afterInteractive" />
           <CalendlyBadgeInit />
           <a href="#page-top" className="skip-link">

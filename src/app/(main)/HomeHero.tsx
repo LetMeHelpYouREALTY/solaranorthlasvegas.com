@@ -2,8 +2,10 @@
 
 import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SITE_IMAGE_PATHS } from "@/lib/site-images";
 import { AGENT, CONTACT_EMAILS, SITE_NAME, getOptionalGbpMapsUrl } from "@/lib/site-contact";
 import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
+import Image from "next/image";
 import Link from "next/link";
 
 export function HomeHero() {
@@ -16,18 +18,20 @@ export function HomeHero() {
       <Column fillWidth center padding="l" style={{ flex: 1 }} className="home-hero-backdrop">
         <div className="home-hero-surface">
           <Column fillWidth horizontal="center" gap="l" align="center">
-            <Badge
-              textVariant="code-default-s"
-              border="neutral-alpha-medium"
-              onBackground="neutral-medium"
-              vertical="center"
-              gap="16"
-            >
-              <Logo dark icon="/trademarks/wordmark-dark.svg" href="/" size="xs" />
-              <Logo light icon="/trademarks/wordmark-light.svg" href="/" size="xs" />
-              <Line vert background="neutral-alpha-strong" />
-              <Text marginX="4">{SITE_NAME}</Text>
-            </Badge>
+            <div className="home-hero-brand-badge">
+              <Badge
+                textVariant="code-default-s"
+                border="neutral-alpha-medium"
+                onBackground="neutral-medium"
+                vertical="center"
+                gap="16"
+              >
+                <Logo dark icon="/trademarks/wordmark-dark.svg" href="/" size="xs" />
+                <Logo light icon="/trademarks/wordmark-light.svg" href="/" size="xs" />
+                <Line vert background="neutral-alpha-strong" />
+                <Text marginX="4">{SITE_NAME}</Text>
+              </Badge>
+            </div>
             <Heading as="h1" variant="display-strong-xl" marginTop="24">
               North Las Vegas real estate with Dr. Jan Duffy
             </Heading>
@@ -53,6 +57,17 @@ export function HomeHero() {
               ? Dr. Jan Duffy can walk you through what to expect—separate from the builder’s sales
               team.
             </Text>
+            <div className="home-hero-photo-wrap">
+              <Image
+                src={SITE_IMAGE_PATHS.homeHeroCommunity}
+                alt="North Las Vegas area homes and master-planned community setting"
+                width={960}
+                height={636}
+                sizes="(max-width: 640px) 92vw, 560px"
+                className="home-hero-photo"
+                priority={false}
+              />
+            </div>
             <div className="home-hero-cta-group">
               <Button
                 id="home-value-cta"

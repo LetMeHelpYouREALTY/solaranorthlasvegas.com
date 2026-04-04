@@ -1,8 +1,10 @@
 import { MarketingShell } from "@/components/layout/MarketingShell";
 import { MarketingArticle } from "@/components/sections/MarketingArticle";
 import { buildSubpageMetadata } from "@/lib/metadata";
+import { SITE_IMAGE_PATHS } from "@/lib/site-images";
 import { AGENT, CONTACT_EMAILS, PRIMARY_CONTACT_EMAIL, SITE_HOSTNAME } from "@/lib/site-contact";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -28,6 +30,17 @@ export default function AboutPage() {
         h1="About Dr. Jan Duffy"
         lead={`${AGENT.fullName} is a Nevada real estate licensee (${AGENT.licenseNumber}) with ${AGENT.brokerage}, focused on helping buyers and sellers make clear decisions in North Las Vegas and across the Las Vegas Valley.`}
       >
+        <section className="about-agent-photo-section" aria-label="Dr. Jan Duffy">
+          <Image
+            src={SITE_IMAGE_PATHS.aboutAgentPhoto}
+            alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
+            width={480}
+            height={480}
+            sizes="(max-width: 640px) 100vw, 360px"
+            className="about-agent-photo"
+            priority={false}
+          />
+        </section>
         <section aria-labelledby="approach-heading">
           <h2 id="approach-heading">How I work with clients</h2>
           <p>

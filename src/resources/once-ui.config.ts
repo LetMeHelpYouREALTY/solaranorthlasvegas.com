@@ -9,7 +9,7 @@ const baseURL = SITE_ORIGIN;
 const heading = Geist({
   variable: "--font-heading",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 const code = Geist_Mono({
@@ -61,7 +61,7 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: true,
+    display: false,
     x: 50,
     y: 8,
     width: 110,

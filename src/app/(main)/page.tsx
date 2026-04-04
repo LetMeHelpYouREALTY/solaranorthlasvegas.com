@@ -13,6 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: meta.home.title,
     description: meta.home.description,
     path: meta.home.path,
+    ogImagePath: meta.home.image,
   });
 }
 
