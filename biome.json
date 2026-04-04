@@ -22,6 +22,28 @@
     "enabled": true,
     "rules": { "recommended": true }
   },
+  "overrides": [
+    {
+      "include": ["src/components/seo/SiteJsonLd.tsx", "src/components/seo/HomeFaqJsonLd.tsx"],
+      "linter": {
+        "rules": {
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          }
+        }
+      }
+    },
+    {
+      "include": ["src/app/(main)/layout.tsx"],
+      "linter": {
+        "rules": {
+          "security": {
+            "noDangerouslySetInnerHtml": "off"
+          }
+        }
+      }
+    }
+  ],
   "javascript": {
     "formatter": {
       "quoteStyle": "double"

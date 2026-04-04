@@ -1,8 +1,25 @@
 "use client";
 
-import { BorderStyle, ChartMode, ChartVariant, DataThemeProvider, IconProvider, NeutralColor, ScalingSize, Schemes, SolidStyle, SolidType, SurfaceStyle, Theme, ThemeProvider, ToastProvider, TransitionStyle } from "@once-ui-system/core";
-import { style, dataStyle } from "../resources/once-ui.config";
+import {
+  type BorderStyle,
+  type ChartMode,
+  type ChartVariant,
+  DataThemeProvider,
+  IconProvider,
+  LayoutProvider,
+  type NeutralColor,
+  type ScalingSize,
+  type Schemes,
+  type SolidStyle,
+  type SolidType,
+  type SurfaceStyle,
+  type Theme,
+  ThemeProvider,
+  ToastProvider,
+  type TransitionStyle,
+} from "@once-ui-system/core";
 import { iconLibrary } from "../resources/icons";
+import { dataStyle, style } from "../resources/once-ui.config";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -18,25 +35,25 @@ export function Providers({ children }: { children: React.ReactNode }) {
       transition={style.transition as TransitionStyle}
       scaling={style.scaling as ScalingSize}
     >
-      <DataThemeProvider
-        variant={dataStyle.variant as ChartVariant}
-        mode={dataStyle.mode as ChartMode}
-        height={dataStyle.height}
-        axis={{
-          stroke: dataStyle.axis.stroke
-        }}
-        tick={{
-          fill: dataStyle.tick.fill,
-          fontSize: dataStyle.tick.fontSize,
-          line: dataStyle.tick.line
-        }}
+      <LayoutProvider>
+        <DataThemeProvider
+          variant={dataStyle.variant as ChartVariant}
+          mode={dataStyle.mode as ChartMode}
+          height={dataStyle.height}
+          axis={{
+            stroke: dataStyle.axis.stroke,
+          }}
+          tick={{
+            fill: dataStyle.tick.fill,
+            fontSize: dataStyle.tick.fontSize,
+            line: dataStyle.tick.line,
+          }}
         >
-        <ToastProvider>
-          <IconProvider icons={iconLibrary}>
-            {children}
-          </IconProvider>
-        </ToastProvider>
-      </DataThemeProvider>
+          <ToastProvider>
+            <IconProvider icons={iconLibrary}>{children}</IconProvider>
+          </ToastProvider>
+        </DataThemeProvider>
+      </LayoutProvider>
     </ThemeProvider>
   );
 }

@@ -1,9 +1,9 @@
-// IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://demo.once-ui.com";
+// Canonical site URL and contact — see src/lib/site-contact.ts
+import { PRIMARY_CONTACT_EMAIL, SITE_NAME, SITE_ORIGIN } from "@/lib/site-contact";
 
-// Import and set font for each variant
-import { Geist } from "next/font/google";
-import { Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+
+const baseURL = SITE_ORIGIN;
 
 const heading = Geist({
   variable: "--font-heading",
@@ -36,31 +36,30 @@ const fonts = {
   code: code,
 };
 
-// default customization applied to the HTML in the main layout.tsx
 const style = {
-  theme: "system", // dark | light | system
-  neutral: "gray", // sand | gray | slate
-  brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  accent: "indigo", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
-  solid: "contrast", // color | contrast | inverse
-  solidStyle: "flat", // flat | plastic
-  border: "playful", // rounded | playful | conservative
-  surface: "filled", // filled | translucent
-  transition: "all", // all | micro | macro
-  scaling: "100", // 90 | 95 | 100 | 105 | 110
+  theme: "system" as const,
+  neutral: "gray" as const,
+  brand: "blue" as const,
+  accent: "indigo" as const,
+  solid: "contrast" as const,
+  solidStyle: "flat" as const,
+  border: "playful" as const,
+  surface: "filled" as const,
+  transition: "all" as const,
+  scaling: "100" as const,
 };
 
 const dataStyle = {
-  variant: "gradient", // flat | gradient | outline
-  mode: "categorical", // categorical | divergent | sequential
-  height: 24, // default chart height
+  variant: "gradient" as const,
+  mode: "categorical" as const,
+  height: 24,
   axis: {
     stroke: "var(--neutral-alpha-weak)",
   },
   tick: {
     fill: "var(--neutral-on-background-weak)",
     fontSize: 11,
-    line: false
+    line: false,
   },
 };
 
@@ -105,31 +104,27 @@ const effects = {
   },
 };
 
-// metadata for pages
 const meta = {
   home: {
     path: "/",
-    title: "Once UI for Next.js",
+    title: `${SITE_NAME} | North Las Vegas Real Estate`,
     description:
-      "An open-source design system and component library for Next.js that emphasizes easy styling and accessibility in UI development.",
+      "North Las Vegas and Las Vegas Valley homes with Dr. Jan Duffy, REALTOR® — Berkshire Hathaway HomeServices Nevada Properties. Email for buying, selling, and local market guidance.",
     image: "/images/og/home.jpg",
-    canonical: "https://once-ui.com",
+    canonical: SITE_ORIGIN,
     robots: "index,follow",
-    alternates: [{ href: "https://once-ui.com", hrefLang: "en" }],
+    alternates: [{ href: SITE_ORIGIN, hrefLang: "en" }],
   },
-  // add more routes and reference them in page.tsx
 };
 
-// default schema data
 const schema = {
   logo: "",
   type: "Organization",
-  name: "Once UI",
+  name: SITE_NAME,
   description: meta.home.description,
-  email: "lorant@once-ui.com",
+  email: PRIMARY_CONTACT_EMAIL,
 };
 
-// social links
 const social = {
   twitter: "https://www.twitter.com/_onceui",
   linkedin: "https://www.linkedin.com/company/once-ui/",

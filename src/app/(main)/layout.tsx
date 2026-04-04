@@ -1,23 +1,37 @@
-import '@once-ui-system/core/css/styles.css';
-import '@once-ui-system/core/css/tokens.css';
-import '@/resources/custom.css'
+import "@once-ui-system/core/css/styles.css";
+import "@once-ui-system/core/css/tokens.css";
+import "@/resources/custom.css";
 
 import classNames from "classnames";
 
-import { baseURL, meta, fonts, effects, style, dataStyle } from "@/resources/once-ui.config";
-import { Meta, Schema,  Column, Flex, opacity, SpacingToken, Background} from "@once-ui-system/core";
-import { Providers } from '@/components/Providers';
+import { Providers } from "@/components/Providers";
+import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
+import { buildHomeMetadata } from "@/lib/metadata";
+import { baseURL, dataStyle, effects, fonts, meta, style } from "@/resources/once-ui.config";
+import {
+  Background,
+  Column,
+  Flex,
+  Schema,
+  type SpacingToken,
+  type opacity,
+} from "@once-ui-system/core";
+import type { Metadata, Viewport } from "next";
 
-export async function generateMetadata() {
-  return Meta.generate({
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return buildHomeMetadata({
     title: meta.home.title,
     description: meta.home.description,
-    baseURL: baseURL,
     path: meta.home.path,
-    canonical: meta.home.canonical,
-    image: meta.home.image,
-    robots: meta.home.robots,
-    alternates: meta.home.alternates,
   });
 }
 
@@ -47,6 +61,7 @@ export default function RootLayout({
         path={meta.home.path}
       />
       <head>
+        <SiteJsonLd />
         <script
           id="theme-init"
           dangerouslySetInnerHTML={{
@@ -62,12 +77,12 @@ export default function RootLayout({
                     accent: style.accent,
                     neutral: style.neutral,
                     solid: style.solid,
-                    'solid-style': style.solidStyle,
+                    "solid-style": style.solidStyle,
                     border: style.border,
                     surface: style.surface,
                     transition: style.transition,
                     scaling: style.scaling,
-                    'viz-style': dataStyle.variant,
+                    "viz-style": dataStyle.variant,
                   })};
                   
                   // Apply default values

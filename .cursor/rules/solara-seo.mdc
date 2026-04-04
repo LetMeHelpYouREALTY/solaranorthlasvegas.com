@@ -1,0 +1,26 @@
+---
+description: Solara North Las Vegas — SEO, schema, sitemap/robots parity
+globs:
+  - "**/src/lib/site-contact.ts"
+  - "**/src/lib/metadata.ts"
+  - "**/src/lib/schema.ts"
+  - "**/src/lib/home-faq.ts"
+  - "**/src/app/sitemap.ts"
+  - "**/src/app/robots.ts"
+  - "**/src/app/**/layout.tsx"
+  - "**/src/app/**/page.tsx"
+  - "**/src/components/seo/**/*.tsx"
+  - "**/src/components/sections/HomeFaq.tsx"
+  - "**/src/components/sections/SiteFooter.tsx"
+alwaysApply: false
+---
+
+# Solara (solaranorthlasvegas.com)
+
+- **Canonical**: `SITE_ORIGIN` in `src/lib/site-contact.ts` must match **Search Console**, **sitemap**, **robots `Sitemap:`**, and **`metadataBase`**.
+- **Helpers**: Use `getCanonicalUrl()` from `src/lib/metadata.ts` for sitemap entries and JSON-LD `url` / `@id` where applicable.
+- **Schema**: Edit structured data in `src/lib/schema.ts` only; do not scatter one-off JSON-LD. Pair **FAQPage** with the same visible FAQ as `HomeFaq` + `HomeFaqJsonLd`.
+- **NAP**: Phone and `sameAs` only via documented env vars; must match **GBP** before enabling.
+- **IDX**: Do not change `components/idx/*` without explicit approval.
+
+See root **AGENTS.md** for stack summary.
