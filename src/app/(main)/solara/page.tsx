@@ -1,3 +1,4 @@
+import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { SolaraFaq } from "@/components/sections/SolaraFaq";
 import { SolaraPageContent } from "@/components/sections/SolaraPageContent";
@@ -18,6 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default function SolaraPage() {
   return (
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+      <SiteHeader />
       <SolaraSupplementaryJsonLd />
       <SolaraFaqJsonLd />
       <SolaraPageContent />

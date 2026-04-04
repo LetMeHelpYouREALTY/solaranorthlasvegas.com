@@ -28,7 +28,8 @@
         "src/components/seo/SiteJsonLd.tsx",
         "src/components/seo/HomeFaqJsonLd.tsx",
         "src/components/seo/SolaraFaqJsonLd.tsx",
-        "src/components/seo/SolaraSupplementaryJsonLd.tsx"
+        "src/components/seo/SolaraSupplementaryJsonLd.tsx",
+        "src/components/seo/MarketingFaqJsonLd.tsx"
       ],
       "linter": {
         "rules": {

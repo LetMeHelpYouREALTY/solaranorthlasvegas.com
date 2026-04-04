@@ -7,6 +7,17 @@ import {
   getOptionalPostalAddress,
   getPublicPhoneE164,
 } from "@/lib/site-contact";
+import Link from "next/link";
+
+const FOOTER_NAV = [
+  { href: "/buyers", label: "Buyers" },
+  { href: "/sellers", label: "Sellers" },
+  { href: "/neighborhoods", label: "Neighborhoods" },
+  { href: "/search", label: "Search" },
+  { href: "/home-value", label: "Home value" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/disclaimer", label: "Disclaimer" },
+];
 
 /**
  * Visible NAP-style footer — must stay aligned with JSON-LD and GBP.
@@ -25,7 +36,7 @@ export function SiteFooter() {
     >
       <div
         style={{
-          maxWidth: "40rem",
+          maxWidth: "42rem",
           margin: "0 auto",
           display: "flex",
           flexDirection: "column",
@@ -35,6 +46,27 @@ export function SiteFooter() {
           textAlign: "center",
         }}
       >
+        <nav aria-label="Footer">
+          <ul
+            style={{
+              margin: "0 0 0.5rem",
+              padding: 0,
+              listStyle: "none",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.5rem 0.75rem",
+              justifyContent: "center",
+            }}
+          >
+            {FOOTER_NAV.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="footer-nav-link">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <p style={{ margin: 0, fontWeight: 600 }}>{SITE_NAME}</p>
         <p style={{ margin: 0 }}>
           {AGENT.fullName} · Nevada license {AGENT.licenseNumber}

@@ -1,7 +1,7 @@
 "use client";
 
-import { SOLARA_SCHEMA_DESCRIPTION, SOLARA_SCHEMA_TITLE } from "@/lib/solara-page";
-import { baseURL, meta } from "@/resources/once-ui.config";
+import { getWebPageSchemaForPath } from "@/lib/web-page-schema";
+import { baseURL } from "@/resources/once-ui.config";
 import { Schema } from "@once-ui-system/core";
 import { usePathname } from "next/navigation";
 
@@ -10,26 +10,15 @@ import { usePathname } from "next/navigation";
  */
 export function DynamicSchema() {
   const pathname = usePathname() ?? "/";
-
-  if (pathname === "/solara") {
-    return (
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={SOLARA_SCHEMA_TITLE}
-        description={SOLARA_SCHEMA_DESCRIPTION}
-        path="/solara"
-      />
-    );
-  }
+  const fields = getWebPageSchemaForPath(pathname);
 
   return (
     <Schema
       as="webPage"
       baseURL={baseURL}
-      title={meta.home.title}
-      description={meta.home.description}
-      path={meta.home.path}
+      title={fields.title}
+      description={fields.description}
+      path={fields.path}
     />
   );
 }

@@ -27,7 +27,8 @@ const fonts = {
 
 const style = {
   theme: "system" as const,
-  neutral: "gray" as const,
+  /** Warmer neutrals for a trust-first, residential feel */
+  neutral: "sand" as const,
   brand: "blue" as const,
   accent: "indigo" as const,
   solid: "contrast" as const,

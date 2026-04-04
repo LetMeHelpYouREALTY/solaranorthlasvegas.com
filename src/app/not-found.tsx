@@ -37,6 +37,18 @@ export default function NotFound() {
         <Link href="/solara" style={{ fontWeight: 600 }}>
           Solara (North Las Vegas)
         </Link>
+        <span aria-hidden="true" style={{ opacity: 0.4 }}>
+          ·
+        </span>
+        <Link href="/neighborhoods" style={{ fontWeight: 600 }}>
+          Neighborhoods
+        </Link>
+        <span aria-hidden="true" style={{ opacity: 0.4 }}>
+          ·
+        </span>
+        <Link href="/contact" style={{ fontWeight: 600 }}>
+          Contact
+        </Link>
       </p>
     </main>
   );

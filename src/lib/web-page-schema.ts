@@ -1,0 +1,99 @@
+import { getNeighborhoodBySlug } from "@/lib/neighborhoods-data";
+import { SOLARA_SCHEMA_DESCRIPTION, SOLARA_SCHEMA_TITLE } from "@/lib/solara-page";
+import { meta } from "@/resources/once-ui.config";
+
+/** Fields for Once UI `Schema` WebPage — keep aligned with visible H1 + meta for each route. */
+export type WebPageSchemaFields = {
+  title: string;
+  description: string;
+  path: string;
+};
+
+const HOME: WebPageSchemaFields = {
+  title: meta.home.title,
+  description: meta.home.description,
+  path: "/",
+};
+
+const STATIC_ROUTES: Record<string, WebPageSchemaFields> = {
+  "/": HOME,
+  "/solara": {
+    title: SOLARA_SCHEMA_TITLE,
+    description: SOLARA_SCHEMA_DESCRIPTION,
+    path: "/solara",
+  },
+  "/about": {
+    title: "About Dr. Jan Duffy | Solara North Las Vegas",
+    description:
+      "Meet Dr. Jan Duffy, Nevada REALTOR with Berkshire Hathaway HomeServices Nevada Properties, serving North Las Vegas and the Las Vegas Valley.",
+    path: "/about",
+  },
+  "/contact": {
+    title: "Contact Dr. Jan Duffy | Solara North Las Vegas",
+    description:
+      "Contact Dr. Jan Duffy for North Las Vegas and Las Vegas Valley real estate questions, Solara new construction guidance, and listing support.",
+    path: "/contact",
+  },
+  "/buyers": {
+    title: "Home buyers — North Las Vegas & valley | Solara North Las Vegas",
+    description:
+      "Buyer roadmap for North Las Vegas and the Las Vegas Valley: financing prep, tours, offers, and closing—with independent REALTOR guidance.",
+    path: "/buyers",
+  },
+  "/sellers": {
+    title: "Home sellers — North Las Vegas & valley | Solara North Las Vegas",
+    description:
+      "Seller guide for North Las Vegas and the Las Vegas Valley: pricing, prep, marketing, and contract timeline with Dr. Jan Duffy.",
+    path: "/sellers",
+  },
+  "/privacy": {
+    title: "Privacy policy | Solara North Las Vegas",
+    description:
+      "Privacy policy for SolaraNorthLasVegas.com — how contact and site information are handled.",
+    path: "/privacy",
+  },
+  "/disclaimer": {
+    title: "Real estate disclaimer | Solara North Las Vegas",
+    description:
+      "MLS, brokerage, and general real estate disclaimers for Solara North Las Vegas and Dr. Jan Duffy.",
+    path: "/disclaimer",
+  },
+  "/search": {
+    title: "Search homes — request MLS access | Solara North Las Vegas",
+    description:
+      "Request a curated home search in North Las Vegas and the Las Vegas Valley with Dr. Jan Duffy.",
+    path: "/search",
+  },
+  "/home-value": {
+    title: "Home value consultation | Solara North Las Vegas",
+    description:
+      "What a home valuation conversation covers—and what it is not—in North Las Vegas and the Las Vegas Valley.",
+    path: "/home-value",
+  },
+  "/neighborhoods": {
+    title: "Neighborhoods — Las Vegas Valley | Solara North Las Vegas",
+    description:
+      "Explore Las Vegas Valley neighborhood guides for buyers and sellers working with Dr. Jan Duffy.",
+    path: "/neighborhoods",
+  },
+};
+
+export function getWebPageSchemaForPath(pathname: string): WebPageSchemaFields {
+  const normalized = pathname === "" ? "/" : pathname;
+  const direct = STATIC_ROUTES[normalized];
+  if (direct) {
+    return direct;
+  }
+  if (normalized.startsWith("/neighborhoods/")) {
+    const slug = normalized.replace("/neighborhoods/", "").split("/")[0] ?? "";
+    const n = getNeighborhoodBySlug(slug);
+    if (n) {
+      return {
+        title: n.schemaTitle,
+        description: n.schemaDescription,
+        path: `/neighborhoods/${n.slug}`,
+      };
+    }
+  }
+  return HOME;
+}
