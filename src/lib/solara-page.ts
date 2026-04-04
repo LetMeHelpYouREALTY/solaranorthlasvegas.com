@@ -1,5 +1,9 @@
 import { SITE_NAME } from "@/lib/site-contact";
 
+/** Lennar’s official Solara (North Las Vegas) community page — verify builder hours, pricing, and inventory */
+export const LENNAR_SOLARA_OFFICIAL_URL =
+  "https://www.lennar.com/new-homes/nevada/las-vegas/north-las-vegas/solara" as const;
+
 /** Dr. Jan Duffy — client home search (preview in an incognito window for the new-client experience) */
 export const DR_JAN_CLIENT_SEARCH_URL = "https://drjanduffy.realscout.com/" as const;
 
@@ -21,15 +25,16 @@ export function formatSolaraWelcomeAddressLine(): string {
 }
 
 /** When community/pricing copy was last reviewed (update when you refresh facts). */
-export const SOLARA_CONTENT_REVIEWED_ON = "2026-04-03" as const;
+export const SOLARA_CONTENT_REVIEWED_ON = "2026-04-04" as const;
 
 export const SOLARA_PAGE_TITLE_ABSOLUTE =
-  `Dr. Jan Duffy — New construction & North Las Vegas homes (Solara) | ${SITE_NAME}` as const;
+  `Lennar Solara North Las Vegas — new homes & REALTOR® help | Dr. Jan Duffy | ${SITE_NAME}` as const;
 
 export const SOLARA_PAGE_DESCRIPTION =
-  "Work with Dr. Jan Duffy, REALTOR®, for buyer and seller guidance in North Las Vegas—including the Solara townhome area. Search homes on her client search page or start onboarding to build your own search. Berkshire Hathaway HomeServices Nevada Properties.";
+  "Lennar Solara: gated Lennar townhomes in North Las Vegas. Dr. Jan Duffy, REALTOR® with Berkshire Hathaway HomeServices Nevada Properties, offers independent buyer/seller guidance—not the builder sales office. Browse homes on her client search; verify pricing, hours, and promotions on Lennar’s official Solara page.";
 
-export const SOLARA_SCHEMA_TITLE = "Dr. Jan Duffy — New construction guidance (Solara area, North Las Vegas)";
+export const SOLARA_SCHEMA_TITLE =
+  "Lennar Solara North Las Vegas — new homes & independent REALTOR® guidance | Dr. Jan Duffy";
 
 export const SOLARA_SCHEMA_DESCRIPTION =
-  "Independent real estate services from Dr. Jan Duffy in North Las Vegas. Solara is a local new-build community; search homes via her client search page.";
+  "Gated Lennar Solara townhomes in North Las Vegas: Dr. Jan Duffy (BHHS Nevada Properties) provides independent REALTOR® guidance. Search homes via her client search; confirm builder details on Lennar’s official Solara page.";

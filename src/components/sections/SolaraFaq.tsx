@@ -1,3 +1,4 @@
+import { linkifyFaqAnswer } from "@/lib/linkify-faq-answer";
 import { SOLARA_FAQ_ITEMS } from "@/lib/solara-faq";
 
 export function SolaraFaq() {
@@ -10,7 +11,7 @@ export function SolaraFaq() {
         {SOLARA_FAQ_ITEMS.map((item) => (
           <article key={item.question} className="aeo-faq-card">
             <h3>{item.question}</h3>
-            <p>{item.answer}</p>
+            <p>{linkifyFaqAnswer(item.answer)}</p>
           </article>
         ))}
       </div>

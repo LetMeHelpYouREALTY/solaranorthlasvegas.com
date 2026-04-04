@@ -29,7 +29,7 @@ export const NEIGHBORHOODS: NeighborhoodRecord[] = [
     h1: "North Las Vegas real estate",
     lead: "North Las Vegas offers a mix of established neighborhoods and new construction—including communities like Solara. Whether you are comparing areas or narrowing a short list, local guidance helps you read disclosures, HOA details, and offer strategy with confidence.",
     body: [
-      "Many buyers start with commute, schools, and monthly payment, then refine by property type (single-family, townhome, condo) and HOA rules. In newer areas, builder timelines, incentives, and lender requirements can move quickly—so it helps to have a clear plan before you tour.",
+      "Many buyers start with commute, schools, and monthly payment, then refine by property type (single-family, townhome, condo) and HOA rules. In newer North Las Vegas areas such as Lennar Solara, builder timelines, incentives, and lender requirements can move quickly—so it helps to have a clear plan before you tour.",
       "If you are considering new construction, remember the builder’s sales team represents the builder. A Nevada licensee working with you can help you understand how that relationship fits alongside your goals.",
     ],
   },

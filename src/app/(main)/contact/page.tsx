@@ -1,3 +1,4 @@
+import { CalendlyInlineEmbed } from "@/components/calendly/CalendlyInlineEmbed";
 import { MarketingShell } from "@/components/layout/MarketingShell";
 import { MarketingArticle } from "@/components/sections/MarketingArticle";
 import { buildSubpageMetadata } from "@/lib/metadata";
@@ -34,6 +35,13 @@ export default function ContactPage() {
         h1="Contact Dr. Jan Duffy"
         lead="Reach out by email for buying, selling, or new construction questions in North Las Vegas and the Las Vegas Valley."
       >
+        <section className="content-panel" aria-labelledby="schedule-heading">
+          <h2 id="schedule-heading">Schedule a 15-minute conversation</h2>
+          <p style={{ marginBottom: "1rem", lineHeight: 1.65 }}>
+            Pick a time that works for you. You can still use email or phone below if you prefer.
+          </p>
+          <CalendlyInlineEmbed />
+        </section>
         <section className="content-panel" aria-labelledby="email-heading">
           <h2 id="email-heading">Email</h2>
           <p>

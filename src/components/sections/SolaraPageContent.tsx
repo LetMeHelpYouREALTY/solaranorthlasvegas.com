@@ -3,6 +3,7 @@ import { AGENT, CONTACT_EMAILS, PRIMARY_CONTACT_EMAIL, SITE_NAME } from "@/lib/s
 import {
   DR_JAN_CLIENT_ONBOARDING_URL,
   DR_JAN_CLIENT_SEARCH_URL,
+  LENNAR_SOLARA_OFFICIAL_URL,
   SOLARA_CONTENT_REVIEWED_ON,
   formatSolaraWelcomeAddressLine,
 } from "@/lib/solara-page";
@@ -25,7 +26,7 @@ export function SolaraPageContent() {
         </nav>
 
         <h1 className="marketing-page-h1">
-          Dr. Jan Duffy — REALTOR® help with new construction &amp; homes in North Las Vegas
+          Lennar Solara, North Las Vegas — new homes & independent REALTOR® help
         </h1>
 
         <p className="marketing-lead">
@@ -69,7 +70,12 @@ export function SolaraPageContent() {
         <p>
           Solara is a gated townhome community in North Las Vegas, Nevada, built by Lennar.
           Promotions, floorplans, inventory, and sales office hours are set by the builder—confirm
-          those details with the builder’s team when you visit or call their office.
+          those details with the builder’s team when you visit or call their office. For
+          first-party builder listings and hours, see{" "}
+          <a href={LENNAR_SOLARA_OFFICIAL_URL} rel="noopener noreferrer" target="_blank">
+            Lennar’s official Solara new homes page — North Las Vegas
+          </a>
+          .
         </p>
         <p style={{ marginBottom: 0 }}>
           <a href={DR_JAN_CLIENT_SEARCH_URL} rel="noopener noreferrer" target="_blank">
@@ -87,7 +93,11 @@ export function SolaraPageContent() {
         <p>
           The builder lists this welcome center address:{" "}
           <strong>{formatSolaraWelcomeAddressLine()}</strong>. Appointments and hours are set by the
-          builder — confirm on their site before you visit.
+          builder — confirm on{" "}
+          <a href={LENNAR_SOLARA_OFFICIAL_URL} rel="noopener noreferrer" target="_blank">
+            Lennar’s official Solara new homes page — North Las Vegas
+          </a>{" "}
+          before you visit.
         </p>
         <p style={{ marginBottom: 0 }}>
           <a

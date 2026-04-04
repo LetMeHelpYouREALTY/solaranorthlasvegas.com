@@ -1,3 +1,4 @@
+import { CalendlyShellStrip } from "@/components/calendly/CalendlyShellStrip";
 import { HomeFaq } from "@/components/sections/HomeFaq";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
@@ -22,6 +23,7 @@ export default function HomePage() {
       <HomeHero />
       <RealScoutOfficeListingsSection compactTop />
       <HomeFaq />
+      <CalendlyShellStrip />
       <SiteFooter />
     </div>
   );

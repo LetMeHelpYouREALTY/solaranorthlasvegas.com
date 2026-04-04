@@ -1,5 +1,9 @@
 import type { HomeFaqItem } from "@/lib/home-faq";
-import { DR_JAN_CLIENT_ONBOARDING_URL, DR_JAN_CLIENT_SEARCH_URL } from "@/lib/solara-page";
+import {
+  DR_JAN_CLIENT_ONBOARDING_URL,
+  DR_JAN_CLIENT_SEARCH_URL,
+  LENNAR_SOLARA_OFFICIAL_URL,
+} from "@/lib/solara-page";
 
 /**
  * Solara route only — do not reuse on the homepage (avoid duplicate thin FAQ sitewide).
@@ -12,9 +16,16 @@ export const SOLARA_FAQ_ITEMS: HomeFaqItem[] = [
   },
   {
     question: "What is Solara in North Las Vegas?",
+    answer: `Solara is a gated townhome community in North Las Vegas built by Lennar. The builder sets pricing, incentives, floorplans, and sales office hours—confirm those details with the builder. To search homes with Dr. Jan Duffy, use her client search page: ${DR_JAN_CLIENT_SEARCH_URL}`,
+  },
+  {
+    question: "Is it spelled Solara or Solera?",
     answer:
-      "Solara is a gated townhome community in North Las Vegas built by Lennar. The builder sets pricing, incentives, floorplans, and sales office hours—confirm those details with the builder. To search homes with Dr. Jan Duffy, use her client search page: " +
-      DR_JAN_CLIENT_SEARCH_URL,
+      "In North Las Vegas, the Lennar community is spelled Solara—not “Solera.” If you are researching floorplans, pricing, or the sales office, use the correct spelling so you land on the right builder materials and maps.",
+  },
+  {
+    question: "Where is the official Lennar page for Solara in North Las Vegas?",
+    answer: `Lennar publishes community details on its official Solara page: ${LENNAR_SOLARA_OFFICIAL_URL} Use it to verify current builder information before you visit or make decisions.`,
   },
   {
     question: "Is this website the same as the builder or the Solara sales office?",
@@ -23,8 +34,7 @@ export const SOLARA_FAQ_ITEMS: HomeFaqItem[] = [
   },
   {
     question: "Where is the Solara welcome center?",
-    answer:
-      "The builder lists the Solara location at 212 Summer Park Ave, North Las Vegas, NV 89031. Tours and hours are typically by appointment; verify on the builder’s site before you visit.",
+    answer: `The builder lists the Solara location at 212 Summer Park Ave, North Las Vegas, NV 89031. Tours and hours are typically by appointment; verify current hours on Lennar’s official page before you visit: ${LENNAR_SOLARA_OFFICIAL_URL}`,
   },
   {
     question: "How is a buyer’s agent different from the builder’s sales representative?",

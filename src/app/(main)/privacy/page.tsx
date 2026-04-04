@@ -39,8 +39,12 @@ export default function PrivacyPage() {
         <section aria-labelledby="third-heading">
           <h2 id="third-heading">Third-party services</h2>
           <p>
-            This site may use standard hosting, analytics, or form providers configured for the
-            property. Those providers have their own privacy terms.
+            This site may use standard hosting, analytics, scheduling tools (such as{" "}
+            <a href="https://calendly.com/pages/privacy" rel="noopener noreferrer" target="_blank">
+              Calendly
+            </a>
+            ), or similar providers configured for the property. Those providers have their own
+            privacy terms.
           </p>
         </section>
         <section aria-labelledby="contact-privacy-heading">

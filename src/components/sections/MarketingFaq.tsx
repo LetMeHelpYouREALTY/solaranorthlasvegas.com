@@ -1,4 +1,5 @@
 import type { HomeFaqItem } from "@/lib/home-faq";
+import { linkifyFaqAnswer } from "@/lib/linkify-faq-answer";
 
 type MarketingFaqProps = {
   items: HomeFaqItem[];
@@ -36,7 +37,9 @@ export function MarketingFaq({ items, sectionTitle, sectionId, headingId }: Mark
             <h3 style={{ fontSize: "1rem", fontWeight: 600, marginBottom: "0.5rem" }}>
               {item.question}
             </h3>
-            <p style={{ margin: 0, lineHeight: 1.6, opacity: 0.9 }}>{item.answer}</p>
+            <p style={{ margin: 0, lineHeight: 1.6, opacity: 0.9 }}>
+              {linkifyFaqAnswer(item.answer)}
+            </p>
           </article>
         ))}
       </div>

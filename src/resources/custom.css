@@ -337,6 +337,59 @@ html {
   text-underline-offset: 3px;
 }
 
+/* Desktop: widen site shell; keep body copy in a readable measure */
+@media (min-width: 1024px) {
+  .home-hero-surface {
+    max-width: min(64rem, 92vw);
+  }
+
+  .site-header-inner,
+  .site-footer-inner {
+    max-width: min(80rem, 96vw);
+  }
+
+  .marketing-page-main,
+  .solara-page-main,
+  .aeo-faq-section {
+    max-width: min(75rem, 94vw);
+  }
+
+  .marketing-page-main--legal {
+    max-width: min(75rem, 94vw);
+  }
+
+  .realscout-office-listings-section {
+    max-width: min(75rem, 94vw);
+  }
+
+  .marketing-prose > .marketing-intro-band {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .marketing-prose > p,
+  .marketing-prose > ol,
+  .marketing-prose > ul:not(.neighborhood-card-grid) {
+    max-width: 50rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .marketing-prose .content-panel p {
+    max-width: 50rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .aeo-faq-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
 .marketing-cta-band {
   margin: 2.25rem 0;
   padding: 1.35rem 1.4rem;
@@ -394,6 +447,12 @@ html {
 @media (min-width: 640px) {
   .neighborhood-card-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .neighborhood-card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -489,4 +548,62 @@ realscout-office-listings {
   --rs-listing-divider-color: #c5a35a;
   width: 100%;
   display: block;
+}
+
+/* Calendly — marketing shell strip + hero CTA alignment */
+.calendly-shell-strip {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+  background: color-mix(in srgb, currentColor 2.5%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  text-align: center;
+}
+
+.calendly-shell-strip__text {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.calendly-shell-strip__link {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: inherit;
+}
+
+.calendly-shell-strip__link:hover {
+  opacity: 0.92;
+}
+
+.home-hero-calendly-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, currentColor 18%, transparent);
+  background: color-mix(in srgb, currentColor 8%, transparent);
+  color: inherit;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.home-hero-calendly-cta:hover {
+  border-color: color-mix(in srgb, currentColor 28%, transparent);
+  background: color-mix(in srgb, currentColor 11%, transparent);
+}
+
+.home-hero-calendly-cta:focus-visible {
+  outline: 2px solid color-mix(in srgb, currentColor 40%, transparent);
+  outline-offset: 2px;
 }

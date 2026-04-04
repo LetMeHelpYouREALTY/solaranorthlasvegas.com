@@ -7,6 +7,8 @@ import classNames from "classnames";
 import { Providers } from "@/components/Providers";
 import { DynamicSchema } from "@/components/seo/DynamicSchema";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
+import { CalendlyBadgeInit } from "@/components/calendly/CalendlyBadgeInit";
+import { CALENDLY_WIDGET_CSS, CALENDLY_WIDGET_JS } from "@/lib/calendly-config";
 import { SITE_ORIGIN } from "@/lib/site-contact";
 import { dataStyle, effects, fonts, style } from "@/resources/once-ui.config";
 import { Background, Column, Flex, type SpacingToken, type opacity } from "@once-ui-system/core";
@@ -42,6 +44,7 @@ export default function RootLayout({
     >
       <DynamicSchema />
       <head>
+        <link href={CALENDLY_WIDGET_CSS} rel="stylesheet" />
         <SiteJsonLd />
         <script
           id="theme-init"
@@ -109,6 +112,8 @@ export default function RootLayout({
             strategy="afterInteractive"
             type="module"
           />
+          <Script src={CALENDLY_WIDGET_JS} strategy="afterInteractive" />
+          <CalendlyBadgeInit />
           <a href="#page-top" className="skip-link">
             Skip to main content
           </a>

@@ -1,7 +1,8 @@
 "use client";
 
+import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { AGENT, CONTACT_EMAILS, SITE_NAME, SITE_ORIGIN } from "@/lib/site-contact";
+import { AGENT, CONTACT_EMAILS, SITE_NAME } from "@/lib/site-contact";
 import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
 import Link from "next/link";
 
@@ -13,7 +14,7 @@ export function HomeHero() {
       <SiteHeader />
       <Column fillWidth center padding="l" style={{ flex: 1 }}>
         <div className="home-hero-surface">
-          <Column maxWidth="s" horizontal="center" gap="l" align="center">
+          <Column fillWidth horizontal="center" gap="l" align="center">
             <Badge
               textVariant="code-default-s"
               border="neutral-alpha-medium"
@@ -21,8 +22,8 @@ export function HomeHero() {
               vertical="center"
               gap="16"
             >
-              <Logo dark icon="/trademarks/wordmark-dark.svg" href={SITE_ORIGIN} size="xs" />
-              <Logo light icon="/trademarks/wordmark-light.svg" href={SITE_ORIGIN} size="xs" />
+              <Logo dark icon="/trademarks/wordmark-dark.svg" href="/" size="xs" />
+              <Logo light icon="/trademarks/wordmark-light.svg" href="/" size="xs" />
               <Line vert background="neutral-alpha-strong" />
               <Text marginX="4">{SITE_NAME}</Text>
             </Badge>
@@ -77,6 +78,9 @@ export function HomeHero() {
               >
                 Neighborhoods
               </Button>
+              <CalendlyPopupLink className="home-hero-calendly-cta">
+                Schedule 15 min with Dr. Jan Duffy
+              </CalendlyPopupLink>
             </div>
             <Text variant="body-default-s" onBackground="neutral-weak" marginTop="4" wrap="balance">
               Listings support:{" "}

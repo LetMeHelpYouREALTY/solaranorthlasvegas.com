@@ -12,6 +12,7 @@ import {
 } from "@/lib/site-contact";
 import {
   DR_JAN_CLIENT_SEARCH_URL,
+  LENNAR_SOLARA_OFFICIAL_URL,
   SOLARA_SCHEMA_DESCRIPTION,
   SOLARA_SCHEMA_TITLE,
   SOLARA_WELCOME_ADDRESS,
@@ -184,7 +185,7 @@ export function buildSolaraSupplementaryGraph(): Record<string, unknown>[] {
       "@id": placeId,
       name: "Solara — North Las Vegas, NV (new-build community)",
       description:
-        "Gated townhome community in North Las Vegas. Confirm builder pricing, hours, and availability with the builder’s sales team; use Dr. Jan Duffy’s client search page to explore homes with her.",
+        "Gated Lennar Solara townhomes in North Las Vegas. Verify builder pricing, hours, and inventory on Lennar’s official Solara page; use Dr. Jan Duffy’s client home search to explore listings with her.",
       address: {
         "@type": "PostalAddress",
         streetAddress: SOLARA_WELCOME_ADDRESS.streetAddress,
@@ -193,7 +194,7 @@ export function buildSolaraSupplementaryGraph(): Record<string, unknown>[] {
         postalCode: SOLARA_WELCOME_ADDRESS.postalCode,
         addressCountry: SOLARA_WELCOME_ADDRESS.addressCountry,
       },
-      sameAs: DR_JAN_CLIENT_SEARCH_URL,
+      sameAs: [LENNAR_SOLARA_OFFICIAL_URL, DR_JAN_CLIENT_SEARCH_URL],
     },
     {
       "@type": "BreadcrumbList",

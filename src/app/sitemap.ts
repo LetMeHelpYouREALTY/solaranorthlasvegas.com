@@ -8,7 +8,7 @@ const STATIC_PATHS: {
   priority: number;
 }[] = [
   { path: "/", changeFrequency: "weekly", priority: 1 },
-  { path: "/solara", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/solara", changeFrequency: "weekly", priority: 0.95 },
   { path: "/about", changeFrequency: "monthly", priority: 0.85 },
   { path: "/contact", changeFrequency: "monthly", priority: 0.9 },
   { path: "/buyers", changeFrequency: "weekly", priority: 0.85 },
@@ -33,7 +33,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: getCanonicalUrl(`/neighborhoods/${slug}`),
     lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.8,
+    // Slightly higher for Solara-adjacent hub (Lennar / North Las Vegas intent clustering with /solara).
+    priority: slug === "north-las-vegas" ? 0.87 : 0.8,
   }));
 
   return [...staticEntries, ...neighborhoodEntries];

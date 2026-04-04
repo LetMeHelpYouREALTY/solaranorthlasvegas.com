@@ -57,7 +57,9 @@ export function SiteFooter() {
           <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`}>listings</a>
         </p>
         <p style={{ margin: 0 }}>
-          <a href="/">{SITE_NAME}</a>
+          <Link href="/" className="footer-nav-link">
+            {SITE_NAME}
+          </Link>
         </p>
       </div>
     </footer>

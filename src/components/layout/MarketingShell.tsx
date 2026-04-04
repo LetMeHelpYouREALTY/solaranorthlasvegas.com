@@ -1,3 +1,4 @@
+import { CalendlyShellStrip } from "@/components/calendly/CalendlyShellStrip";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/sections/SiteFooter";
 
@@ -9,6 +10,7 @@ export function MarketingShell({ children }: { children: React.ReactNode }) {
     >
       <SiteHeader />
       {children}
+      <CalendlyShellStrip />
       <SiteFooter />
     </div>
   );
