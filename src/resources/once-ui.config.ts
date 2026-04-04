@@ -5,20 +5,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 const baseURL = SITE_ORIGIN;
 
+/** One sans loader per Next.js guidance; `--font-body` / `--font-label` alias in `custom.css`. */
 const heading = Geist({
   variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const body = Geist({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const label = Geist({
-  variable: "--font-label",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,10 +19,10 @@ const code = Geist_Mono({
 });
 
 const fonts = {
-  heading: heading,
-  body: body,
-  label: label,
-  code: code,
+  heading,
+  body: heading,
+  label: heading,
+  code,
 };
 
 const style = {

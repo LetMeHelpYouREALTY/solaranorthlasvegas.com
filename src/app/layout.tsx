@@ -36,12 +36,7 @@ export default function RootLayout({
       as="html"
       lang="en"
       fillWidth
-      className={classNames(
-        fonts.heading.variable,
-        fonts.body.variable,
-        fonts.label.variable,
-        fonts.code.variable,
-      )}
+      className={classNames(fonts.heading.variable, fonts.code.variable)}
     >
       <DynamicSchema />
       <head>
@@ -107,6 +102,9 @@ export default function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth margin="0" padding="0">
+          <a href="#page-top" className="skip-link">
+            Skip to main content
+          </a>
           <Background
             position="absolute"
             mask={{

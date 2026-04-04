@@ -39,7 +39,7 @@
       }
     },
     {
-      "include": ["src/app/(main)/layout.tsx"],
+      "include": ["src/app/layout.tsx"],
       "linter": {
         "rules": {
           "security": {
