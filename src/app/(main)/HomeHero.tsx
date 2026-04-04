@@ -60,8 +60,8 @@ export function HomeHero() {
               <img
                 src={publicImageSrc(SITE_IMAGE_PATHS.homeHeroAgent)}
                 alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
-                width={480}
-                height={480}
+                width={208}
+                height={208}
                 className="home-hero-photo"
                 loading="eager"
                 decoding="async"

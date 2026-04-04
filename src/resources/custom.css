@@ -155,17 +155,22 @@ html[data-theme="dark"] {
 }
 
 .home-hero-photo-wrap {
-  width: 100%;
-  max-width: 35rem;
-  margin: 0.25rem auto 0;
+  width: auto;
+  max-width: 13rem;
+  margin: 0.5rem auto 0;
 }
 
 .home-hero-photo {
+  display: block;
   width: 100%;
+  max-width: 13rem;
   height: auto;
-  border-radius: 0.65rem;
+  aspect-ratio: 1;
   object-fit: cover;
-  border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+  object-position: center 20%;
+  border-radius: 50%;
+  border: 2px solid rgba(201, 162, 39, 0.45);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
 }
 
 .about-agent-photo-section {
@@ -211,7 +216,7 @@ html[data-theme="dark"] {
   isolation: isolate;
 }
 
-/* Soft gold wash on dark — hero portrait comes from ::after photo + scrim. */
+/* Soft gold wash behind hero (no full-bleed portrait — avoids oversized duplicate photo). */
 .home-hero-backdrop::before {
   content: "";
   position: absolute;
@@ -232,34 +237,7 @@ html[data-theme="dark"] {
   background: radial-gradient(ellipse 90% 55% at 50% 0%, rgba(201, 162, 39, 0.1), transparent 55%);
 }
 
-/* Dr. Jan Duffy portrait as ambient hero backdrop (path-encoded for spaces in filename). */
-.home-hero-backdrop::after {
-  content: "";
-  position: absolute;
-  inset: -6% -12% -2%;
-  z-index: 0;
-  pointer-events: none;
-  border-radius: 0 0 48% 48% / 0 0 26% 26%;
-  background-image: linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--page-background, #fff) 82%, transparent) 0%,
-      color-mix(in srgb, var(--page-background, #fff) 68%, transparent) 45%,
-      color-mix(in srgb, var(--page-background, #fff) 55%, transparent) 100%
-    ),
-    url("/images/team/design%2004_new%202.jpg");
-  background-size: cover;
-  background-position: center 18%;
-}
-
-[data-theme="dark"] .home-hero-backdrop::after {
-  background-image: linear-gradient(
-      165deg,
-      color-mix(in srgb, #0a0a0a 88%, transparent) 0%,
-      color-mix(in srgb, #0a0a0a 72%, transparent) 50%,
-      color-mix(in srgb, #0a0a0a 58%, transparent) 100%
-    ),
-    url("/images/team/design%2004_new%202.jpg");
-}
+/* Portrait only inside the card — no full-bleed duplicate (avoids huge zoomed/blurry backdrop). */
 
 .home-hero-backdrop > * {
   position: relative;
