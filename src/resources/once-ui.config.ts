@@ -26,12 +26,13 @@ const fonts = {
 };
 
 const style = {
-  theme: "system" as const,
-  /** Warmer neutrals for a trust-first, residential feel */
-  neutral: "sand" as const,
-  brand: "blue" as const,
-  accent: "indigo" as const,
-  solid: "contrast" as const,
+  /** Luxury stack: dark charcoal + gold; SiteThemeDefaults locks palette after load */
+  theme: "dark" as const,
+  neutral: "slate" as const,
+  brand: "custom" as const,
+  accent: "yellow" as const,
+  /** `color` = brand gold fills + high-contrast labels (not contrast=white/black). */
+  solid: "color" as const,
   solidStyle: "flat" as const,
   border: "playful" as const,
   surface: "filled" as const,
@@ -72,7 +73,7 @@ const effects = {
     opacity: 28,
   },
   dots: {
-    display: true,
+    display: false,
     size: "2",
     color: "brand-on-background-weak",
     opacity: 40,

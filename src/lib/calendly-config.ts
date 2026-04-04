@@ -9,9 +9,9 @@ export const CALENDLY_WIDGET_CSS = "https://assets.calendly.com/assets/external/
 export const CALENDLY_BADGE_OPTIONS = {
   url: CALENDLY_EVENT_URL,
   text: "Schedule time with me",
-  /** Aligns with hero primary CTA / site brand blue */
-  color: "#2563eb",
-  textColor: "#ffffff",
+  /** Luxury gold badge — pairs with dark theme + hero CTAs */
+  color: "#c9a227",
+  textColor: "#14110a",
   branding: false,
 } as const;
 

@@ -21,8 +21,8 @@ export default function SolaraOpenGraphImage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(145deg, #1e293b 0%, #1e3a8a 50%, #172554 100%)",
-        color: "#f8fafc",
+        background: "linear-gradient(148deg, #0b0b0f 0%, #231c0d 45%, #5c4818 100%)",
+        color: "#f8f5ec",
         padding: 48,
         fontFamily: "system-ui, sans-serif",
       }}
@@ -30,6 +30,15 @@ export default function SolaraOpenGraphImage() {
       <div style={{ fontSize: 48, fontWeight: 700, textAlign: "center", lineHeight: 1.2 }}>
         Dr. Jan Duffy — North Las Vegas REALTOR®
       </div>
+      <div
+        style={{
+          marginTop: 16,
+          width: 120,
+          height: 4,
+          borderRadius: 999,
+          background: "#c9a227",
+        }}
+      />
       <div
         style={{
           marginTop: 20,

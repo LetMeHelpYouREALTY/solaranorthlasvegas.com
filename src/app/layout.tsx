@@ -24,8 +24,8 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#c9a227" },
+    { media: "(prefers-color-scheme: dark)", color: "#0b0b0f" },
   ],
 };
 
@@ -133,6 +133,8 @@ export default function RootLayout({
           </a>
           <Background
             position="absolute"
+            pointerEvents="none"
+            className="site-page-background"
             mask={{
               x: effects.mask.x,
               y: effects.mask.y,

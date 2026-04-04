@@ -21,8 +21,8 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(145deg, #0f172a 0%, #1e3a8a 55%, #312e81 100%)",
-        color: "#f8fafc",
+        background: "linear-gradient(148deg, #0b0b0f 0%, #1a1612 42%, #3d3012 100%)",
+        color: "#f8f5ec",
         padding: 48,
         fontFamily: "system-ui, sans-serif",
       }}
@@ -30,6 +30,15 @@ export default function OpenGraphImage() {
       <div style={{ fontSize: 52, fontWeight: 700, textAlign: "center", lineHeight: 1.15 }}>
         Dr. Jan Duffy — REALTOR®
       </div>
+      <div
+        style={{
+          marginTop: 16,
+          width: 120,
+          height: 4,
+          borderRadius: 999,
+          background: "#c9a227",
+        }}
+      />
       <div
         style={{
           marginTop: 20,

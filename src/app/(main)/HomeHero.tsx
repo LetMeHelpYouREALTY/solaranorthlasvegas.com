@@ -2,10 +2,9 @@
 
 import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SITE_IMAGE_PATHS } from "@/lib/site-images";
+import { SITE_IMAGE_PATHS, publicImageSrc } from "@/lib/site-images";
 import { AGENT, CONTACT_EMAILS, SITE_NAME, getOptionalGbpMapsUrl } from "@/lib/site-contact";
 import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
-import Image from "next/image";
 import Link from "next/link";
 
 export function HomeHero() {
@@ -58,14 +57,14 @@ export function HomeHero() {
               team.
             </Text>
             <div className="home-hero-photo-wrap">
-              <Image
-                src={SITE_IMAGE_PATHS.homeHeroCommunity}
-                alt="North Las Vegas area homes and master-planned community setting"
-                width={960}
-                height={636}
-                sizes="(max-width: 640px) 92vw, 560px"
+              <img
+                src={publicImageSrc(SITE_IMAGE_PATHS.homeHeroAgent)}
+                alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
+                width={480}
+                height={480}
                 className="home-hero-photo"
-                priority={false}
+                loading="eager"
+                decoding="async"
               />
             </div>
             <div className="home-hero-cta-group">
@@ -73,18 +72,18 @@ export function HomeHero() {
                 id="home-value-cta"
                 href="/home-value"
                 data-border="rounded"
-                weight="default"
+                weight="strong"
               >
                 Free home evaluation
               </Button>
-              <Button id="search-cta" href="/search" data-border="rounded" weight="default">
+              <Button id="search-cta" href="/search" data-border="rounded" weight="strong">
                 Search
               </Button>
               <Button
                 id="neighborhoods-cta"
                 href="/neighborhoods"
                 data-border="rounded"
-                weight="default"
+                weight="strong"
               >
                 Neighborhoods
               </Button>

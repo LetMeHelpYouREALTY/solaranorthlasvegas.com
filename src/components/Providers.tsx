@@ -18,6 +18,7 @@ import {
   ToastProvider,
   type TransitionStyle,
 } from "@once-ui-system/core";
+import { SiteThemeDefaults } from "@/components/SiteThemeDefaults";
 import { iconLibrary } from "../resources/icons";
 import { dataStyle, style } from "../resources/once-ui.config";
 
@@ -25,7 +26,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider
       theme={style.theme as Theme}
-      brand={style.brand as Schemes}
+      brand={style.brand as Schemes | "custom"}
       accent={style.accent as Schemes}
       neutral={style.neutral as NeutralColor}
       solid={style.solid as SolidType}
@@ -50,7 +51,10 @@ export function Providers({ children }: { children: React.ReactNode }) {
           }}
         >
           <ToastProvider>
-            <IconProvider icons={iconLibrary}>{children}</IconProvider>
+            <IconProvider icons={iconLibrary}>
+              <SiteThemeDefaults />
+              {children}
+            </IconProvider>
           </ToastProvider>
         </DataThemeProvider>
       </LayoutProvider>

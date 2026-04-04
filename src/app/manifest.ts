@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "North Las Vegas real estate with Dr. Jan Duffy — Berkshire Hathaway HomeServices Nevada Properties.",
     start_url: "/",
     display: "browser",
-    background_color: "#0a0a0a",
-    theme_color: "#ffffff",
+    background_color: "#0b0b0f",
+    theme_color: "#c9a227",
     icons: [
       {
         src: "/icons/android-icon-192x192.png",
