@@ -24,7 +24,12 @@
   },
   "overrides": [
     {
-      "include": ["src/components/seo/SiteJsonLd.tsx", "src/components/seo/HomeFaqJsonLd.tsx"],
+      "include": [
+        "src/components/seo/SiteJsonLd.tsx",
+        "src/components/seo/HomeFaqJsonLd.tsx",
+        "src/components/seo/SolaraFaqJsonLd.tsx",
+        "src/components/seo/SolaraSupplementaryJsonLd.tsx"
+      ],
       "linter": {
         "rules": {
           "security": {

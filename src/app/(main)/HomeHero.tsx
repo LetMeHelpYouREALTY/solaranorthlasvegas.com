@@ -2,6 +2,7 @@
 
 import { AGENT, CONTACT_EMAILS, SITE_NAME, SITE_ORIGIN } from "@/lib/site-contact";
 import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
+import Link from "next/link";
 
 export function HomeHero() {
   const mailPrimary = `mailto:${CONTACT_EMAILS.drDuffy}`;
@@ -28,10 +29,17 @@ export function HomeHero() {
           variant="heading-default-xl"
           onBackground="neutral-weak"
           wrap="balance"
-          marginBottom="16"
+          marginBottom="8"
         >
           Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and
           strategy with Berkshire Hathaway HomeServices Nevada Properties.
+        </Text>
+        <Text variant="body-default-s" onBackground="neutral-weak" marginBottom="16" wrap="balance">
+          Explore{" "}
+          <Link href="/solara" style={{ textDecoration: "underline", fontWeight: 600 }}>
+            Solara new construction in North Las Vegas
+          </Link>{" "}
+          (Lennar community overview + independent REALTOR guidance).
         </Text>
         <Column horizontal="center" gap="8">
           <Button

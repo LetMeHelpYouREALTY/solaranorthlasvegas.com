@@ -5,18 +5,16 @@ import "@/resources/custom.css";
 import classNames from "classnames";
 
 import { Providers } from "@/components/Providers";
+import { DynamicSchema } from "@/components/seo/DynamicSchema";
 import { SiteJsonLd } from "@/components/seo/SiteJsonLd";
-import { buildHomeMetadata } from "@/lib/metadata";
-import { baseURL, dataStyle, effects, fonts, meta, style } from "@/resources/once-ui.config";
-import {
-  Background,
-  Column,
-  Flex,
-  Schema,
-  type SpacingToken,
-  type opacity,
-} from "@once-ui-system/core";
+import { SITE_ORIGIN } from "@/lib/site-contact";
+import { dataStyle, effects, fonts, style } from "@/resources/once-ui.config";
+import { Background, Column, Flex, type SpacingToken, type opacity } from "@once-ui-system/core";
 import type { Metadata, Viewport } from "next";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_ORIGIN),
+};
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -26,14 +24,6 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
 };
-
-export async function generateMetadata(): Promise<Metadata> {
-  return buildHomeMetadata({
-    title: meta.home.title,
-    description: meta.home.description,
-    path: meta.home.path,
-  });
-}
 
 export default function RootLayout({
   children,
@@ -53,13 +43,7 @@ export default function RootLayout({
         fonts.code.variable,
       )}
     >
-      <Schema
-        as="webPage"
-        baseURL={baseURL}
-        title={meta.home.title}
-        description={meta.home.description}
-        path={meta.home.path}
-      />
+      <DynamicSchema />
       <head>
         <SiteJsonLd />
         <script

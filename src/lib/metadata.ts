@@ -99,3 +99,76 @@ export function buildHomeMetadata(input: {
     },
   };
 }
+
+/**
+ * Inner routes (e.g. /solara) — use `title.absolute` so the root title template does not stack.
+ */
+export function buildSubpageMetadata(input: {
+  titleAbsolute: string;
+  description: string;
+  path: string;
+  keywords?: string[];
+}): Metadata {
+  const canonical = getCanonicalUrl(input.path);
+  const keywords = input.keywords ?? [
+    "Solara North Las Vegas",
+    "Lennar Solara",
+    "new construction North Las Vegas",
+    "North Las Vegas townhomes",
+    SITE_HOSTNAME,
+  ];
+
+  return {
+    metadataBase: new URL(SITE_ORIGIN),
+    title: { absolute: input.titleAbsolute },
+    description: input.description,
+    applicationName: SITE_NAME,
+    authors: [{ name: "Dr. Jan Duffy", url: SITE_ORIGIN }],
+    publisher: SITE_NAME,
+    creator: "Dr. Jan Duffy",
+    alternates: {
+      canonical,
+      languages: {
+        "en-US": canonical,
+        "x-default": canonical,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: canonical,
+      siteName: SITE_NAME,
+      countryName: "United States",
+      title: input.titleAbsolute,
+      description: input.description,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: input.titleAbsolute,
+      description: input.description,
+    },
+    icons: {
+      icon: [{ url: "/trademarks/icon-dark.svg", type: "image/svg+xml" }],
+      apple: [{ url: "/trademarks/icon-dark.svg" }],
+    },
+    verification: googleVerification ? { google: googleVerification } : undefined,
+    keywords,
+    category: "real estate",
+    formatDetection: {
+      email: false,
+      address: true,
+      telephone: true,
+    },
+  };
+}

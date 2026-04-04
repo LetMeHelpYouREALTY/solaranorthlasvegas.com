@@ -10,6 +10,12 @@ import {
   getPublicPhoneE164,
   getSameAsProfileUrls,
 } from "@/lib/site-contact";
+import {
+  LENNAR_SOLARA_OFFICIAL_URL,
+  SOLARA_SCHEMA_DESCRIPTION,
+  SOLARA_SCHEMA_TITLE,
+  SOLARA_WELCOME_ADDRESS,
+} from "@/lib/solara-page";
 
 function postalToSchemaAddress(parts: NonNullable<ReturnType<typeof getOptionalPostalAddress>>) {
   return {
@@ -152,4 +158,64 @@ export function serializeFaqPageLd(items: HomeFaqItem[], pagePath: string): stri
     "@context": "https://schema.org",
     ...body,
   });
+}
+
+const SOLARA_PATH = "/solara" as const;
+
+/** WebPage, Place (community), BreadcrumbList for /solara — complements global graph in layout. */
+export function buildSolaraSupplementaryGraph(): Record<string, unknown>[] {
+  const pageUrl = getCanonicalUrl(SOLARA_PATH);
+  const homeUrl = getCanonicalUrl("/");
+  const placeId = `${pageUrl}#solara-community`;
+
+  return [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: SOLARA_SCHEMA_TITLE,
+      description: SOLARA_SCHEMA_DESCRIPTION,
+      isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+      about: { "@id": placeId },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "Place",
+      "@id": placeId,
+      name: "Solara (Lennar) — North Las Vegas, NV",
+      description:
+        "Lennar new-home community. Builder details, pricing, and availability are authoritative on Lennar.com.",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SOLARA_WELCOME_ADDRESS.streetAddress,
+        addressLocality: SOLARA_WELCOME_ADDRESS.addressLocality,
+        addressRegion: SOLARA_WELCOME_ADDRESS.addressRegion,
+        postalCode: SOLARA_WELCOME_ADDRESS.postalCode,
+        addressCountry: SOLARA_WELCOME_ADDRESS.addressCountry,
+      },
+      sameAs: LENNAR_SOLARA_OFFICIAL_URL,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: SITE_NAME,
+          item: homeUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Solara new construction",
+          item: pageUrl,
+        },
+      ],
+    },
+  ];
+}
+
+export function serializeSolaraSupplementaryLd(): string {
+  return serializeJsonLdGraph(buildSolaraSupplementaryGraph());
 }
