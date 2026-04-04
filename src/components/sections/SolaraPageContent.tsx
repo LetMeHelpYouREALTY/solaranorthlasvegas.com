@@ -1,3 +1,4 @@
+import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import {
   AGENT,
@@ -10,7 +11,6 @@ import {
   DR_JAN_CLIENT_ONBOARDING_URL,
   DR_JAN_CLIENT_SEARCH_URL,
   LENNAR_SOLARA_OFFICIAL_URL,
-  SOLARA_CONTENT_REVIEWED_ON,
   formatSolaraWelcomeAddressLine,
 } from "@/lib/solara-page";
 import Link from "next/link";
@@ -36,11 +36,10 @@ export function SolaraPageContent() {
         </h1>
 
         <p className="marketing-lead">
-          <strong>Updated {SOLARA_CONTENT_REVIEWED_ON}.</strong> This page is about{" "}
-          <strong>how to reach Dr. Jan Duffy</strong> if you are buying or selling in North Las
-          Vegas—including around the <strong>Solara</strong> townhome community. She is not the
-          builder’s sales office; she offers independent guidance as a Nevada licensee with{" "}
-          <strong>{AGENT.brokerage}</strong>.
+          <strong>Lennar Solara</strong> in North Las Vegas: <strong>{AGENT.fullName}</strong> offers
+          independent REALTOR® guidance if you are buying or selling—including around the{" "}
+          <strong>Solara</strong> townhome community. She is not the builder’s sales office; she is a
+          Nevada licensee with <strong>{AGENT.brokerage}</strong>.
         </p>
 
         <p style={{ margin: "0 0 1rem", lineHeight: 1.65 }}>
@@ -117,20 +116,36 @@ export function SolaraPageContent() {
         </p>
       </section>
 
-      <section className="content-panel" aria-labelledby="agent-heading">
-        <h2 id="agent-heading">Independent real estate representation</h2>
-        <p>
-          <strong>{AGENT.fullName}</strong> is a Nevada real estate licensee ({AGENT.licenseNumber})
-          affiliated with <strong>{AGENT.brokerage}</strong>. This page supports education and
-          outreach — it does not replace builder contracts, HOA documents, lender disclosures, or
-          Nevada agency forms.
+      <section
+        className="marketing-cta-band solara-homebuyer-cta"
+        aria-labelledby="solara-homebuyer-cta-heading"
+      >
+        <h2 id="solara-homebuyer-cta-heading">Ready to buy at Solara or nearby?</h2>
+        <p style={{ margin: 0, lineHeight: 1.6, opacity: 0.95 }}>
+          Get a focused 15-minute call, search live inventory with Dr. Jan Duffy, or send your
+          questions—she represents <strong>your</strong> interests, not the builder’s sales team.
         </p>
-        <p style={{ marginBottom: 0 }}>
-          <Link href="/">Back to home</Link>
-          {" · "}
-          <Link href="/buyers">Buyer roadmap</Link>
-          {" · "}
-          <Link href="/contact">Contact</Link>
+        <div className="solara-homebuyer-cta__actions">
+          <CalendlyPopupLink className="home-hero-calendly-cta home-hero-calendly-cta--primary">
+            Schedule a 15-minute call
+          </CalendlyPopupLink>
+          <a
+            className="solara-homebuyer-cta__secondary"
+            href={DR_JAN_CLIENT_SEARCH_URL}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Search homes now
+          </a>
+          <Link className="solara-homebuyer-cta__secondary" href="/contact">
+            Contact form
+          </Link>
+          <a className="solara-homebuyer-cta__secondary" href={`mailto:${PRIMARY_CONTACT_EMAIL}`}>
+            Email {PRIMARY_CONTACT_EMAIL}
+          </a>
+        </div>
+        <p style={{ margin: "1rem 0 0", fontSize: "0.875rem", lineHeight: 1.55, opacity: 0.88 }}>
+          Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
         </p>
       </section>
     </main>
