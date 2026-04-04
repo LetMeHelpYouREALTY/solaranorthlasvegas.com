@@ -280,3 +280,10 @@ html {
   background: color-mix(in srgb, var(--page-background, #0a0a0a) 92%, transparent);
   backdrop-filter: blur(8px);
 }
+
+/* RealScout web components (script loaded once in root layout) */
+realscout-office-listings {
+  --rs-listing-divider-color: #c5a35a;
+  width: 100%;
+  display: block;
+}

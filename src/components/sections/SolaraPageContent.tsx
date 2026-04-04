@@ -1,3 +1,4 @@
+import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import { AGENT, CONTACT_EMAILS, PRIMARY_CONTACT_EMAIL, SITE_NAME } from "@/lib/site-contact";
 import {
   LENNAR_SOLARA_OFFICIAL_URL,
@@ -52,6 +53,8 @@ export function SolaraPageContent() {
           View Solara on Lennar.com (official pricing &amp; availability)
         </a>
       </p>
+
+      <RealScoutOfficeListingsSection />
 
       <section aria-labelledby="visit-heading" style={{ marginBottom: "1.75rem" }}>
         <h2

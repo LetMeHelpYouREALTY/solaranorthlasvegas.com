@@ -11,11 +11,13 @@ import { SITE_ORIGIN } from "@/lib/site-contact";
 import { dataStyle, effects, fonts, style } from "@/resources/once-ui.config";
 import { Background, Column, Flex, type SpacingToken, type opacity } from "@once-ui-system/core";
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
 };
 
+/** Light `#ffffff` matches `manifest.ts` `theme_color`; dark matches primary UI surface. */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -102,6 +104,11 @@ export default function RootLayout({
       </head>
       <Providers>
         <Column as="body" background="page" fillWidth margin="0" padding="0">
+          <Script
+            src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
+            strategy="afterInteractive"
+            type="module"
+          />
           <a href="#page-top" className="skip-link">
             Skip to main content
           </a>

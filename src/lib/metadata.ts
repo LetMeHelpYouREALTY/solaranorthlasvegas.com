@@ -3,6 +3,39 @@ import type { Metadata } from "next";
 
 const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
 
+const PNG = "image/png" as const;
+
+/**
+ * Classic multi-size favicons + Apple touch icons under `/public/icons/`
+ * (generated via `node scripts/generate-favicons.mjs`), plus SVG fallback and MS tile tags.
+ */
+const siteFaviconMetadata: Pick<Metadata, "icons" | "other"> = {
+  icons: {
+    icon: [
+      { url: "/icons/favicon-16x16.png", sizes: "16x16", type: PNG },
+      { url: "/icons/favicon-32x32.png", sizes: "32x32", type: PNG },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: PNG },
+      { url: "/icons/android-icon-192x192.png", sizes: "192x192", type: PNG },
+      { url: "/trademarks/icon-dark.svg", type: "image/svg+xml" },
+    ],
+    apple: [
+      { url: "/icons/apple-icon-57x57.png", sizes: "57x57", type: PNG },
+      { url: "/icons/apple-icon-60x60.png", sizes: "60x60", type: PNG },
+      { url: "/icons/apple-icon-72x72.png", sizes: "72x72", type: PNG },
+      { url: "/icons/apple-icon-76x76.png", sizes: "76x76", type: PNG },
+      { url: "/icons/apple-icon-114x114.png", sizes: "114x114", type: PNG },
+      { url: "/icons/apple-icon-120x120.png", sizes: "120x120", type: PNG },
+      { url: "/icons/apple-icon-144x144.png", sizes: "144x144", type: PNG },
+      { url: "/icons/apple-icon-152x152.png", sizes: "152x152", type: PNG },
+      { url: "/icons/apple-icon-180x180.png", sizes: "180x180", type: PNG },
+    ],
+  },
+  other: {
+    "msapplication-TileColor": "#ffffff",
+    "msapplication-TileImage": "/icons/ms-icon-144x144.png",
+  },
+};
+
 /** Canonical absolute URL — use for sitemap, JSON-LD, and `rel=canonical` parity. */
 export function getCanonicalUrl(path: string): string {
   const normalized = path.startsWith("/") ? path : `/${path}`;
@@ -79,10 +112,7 @@ export function buildHomeMetadata(input: {
       description: input.description,
       ...(ogAbsolute ? { images: [ogAbsolute] } : {}),
     },
-    icons: {
-      icon: [{ url: "/trademarks/icon-dark.svg", type: "image/svg+xml" }],
-      apple: [{ url: "/trademarks/icon-dark.svg" }],
-    },
+    ...siteFaviconMetadata,
     verification: googleVerification ? { google: googleVerification } : undefined,
     keywords: [
       "North Las Vegas real estate",
@@ -158,10 +188,7 @@ export function buildSubpageMetadata(input: {
       title: input.titleAbsolute,
       description: input.description,
     },
-    icons: {
-      icon: [{ url: "/trademarks/icon-dark.svg", type: "image/svg+xml" }],
-      apple: [{ url: "/trademarks/icon-dark.svg" }],
-    },
+    ...siteFaviconMetadata,
     verification: googleVerification ? { google: googleVerification } : undefined,
     keywords,
     category: "real estate",

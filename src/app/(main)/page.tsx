@@ -1,5 +1,6 @@
 import { HomeFaq } from "@/components/sections/HomeFaq";
 import { SiteFooter } from "@/components/sections/SiteFooter";
+import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import { HomeFaqJsonLd } from "@/components/seo/HomeFaqJsonLd";
 import { buildHomeMetadata } from "@/lib/metadata";
 import { meta } from "@/resources/once-ui.config";
@@ -19,6 +20,7 @@ export default function HomePage() {
     <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <HomeFaqJsonLd />
       <HomeHero />
+      <RealScoutOfficeListingsSection compactTop />
       <HomeFaq />
       <SiteFooter />
     </div>

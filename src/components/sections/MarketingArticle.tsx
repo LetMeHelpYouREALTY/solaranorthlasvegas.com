@@ -1,3 +1,4 @@
+import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import { SITE_NAME } from "@/lib/site-contact";
 import Link from "next/link";
 
@@ -50,6 +51,7 @@ export function MarketingArticle({
       </nav>
       <h1 className="marketing-page-h1">{h1}</h1>
       {lead ? <p className="marketing-lead">{lead}</p> : null}
+      <RealScoutOfficeListingsSection />
       {children}
     </main>
   );
