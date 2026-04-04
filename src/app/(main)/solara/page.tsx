@@ -6,7 +6,7 @@ import { SolaraPageContent } from "@/components/sections/SolaraPageContent";
 import { SolaraFaqJsonLd } from "@/components/seo/SolaraFaqJsonLd";
 import { SolaraSupplementaryJsonLd } from "@/components/seo/SolaraSupplementaryJsonLd";
 import { buildSubpageMetadata } from "@/lib/metadata";
-import { SITE_HOSTNAME } from "@/lib/site-contact";
+import { SITE_HOSTNAME, SITE_NAME, SITE_NAME_SHORT } from "@/lib/site-contact";
 import { SOLARA_PAGE_DESCRIPTION, SOLARA_PAGE_TITLE_ABSOLUTE } from "@/lib/solara-page";
 import type { Metadata } from "next";
 
@@ -21,6 +21,8 @@ export async function generateMetadata(): Promise<Metadata> {
       "Lennar North Las Vegas",
       "Solara townhomes North Las Vegas",
       "Solara or Solera",
+      SITE_NAME_SHORT,
+      SITE_NAME,
       SITE_HOSTNAME,
     ],
   });

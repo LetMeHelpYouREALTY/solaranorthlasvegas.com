@@ -9,7 +9,8 @@ export const CALENDLY_WIDGET_CSS = "https://assets.calendly.com/assets/external/
 export const CALENDLY_BADGE_OPTIONS = {
   url: CALENDLY_EVENT_URL,
   text: "Schedule time with me",
-  color: "#0069ff",
+  /** Aligns with hero primary CTA / site brand blue */
+  color: "#2563eb",
   textColor: "#ffffff",
   branding: false,
 } as const;

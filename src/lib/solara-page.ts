@@ -10,7 +10,10 @@ export const DR_JAN_CLIENT_SEARCH_URL = "https://drjanduffy.realscout.com/" as c
 /** Prospect onboarding — invite to create their own search */
 export const DR_JAN_CLIENT_ONBOARDING_URL = "https://drjanduffy.realscout.com/onboarding" as const;
 
-/** Builder welcome center (public hours/visits: by appointment per builder) */
+/**
+ * Dr. Jan Duffy Solara North Las Vegas office address — same street as Lennar’s listed welcome center.
+ * Builder sets welcome-center hours; confirm on Lennar’s official Solara page before new-home visits.
+ */
 export const SOLARA_WELCOME_ADDRESS = {
   streetAddress: "212 Summer Park Ave",
   addressLocality: "North Las Vegas",
@@ -28,7 +31,7 @@ export function formatSolaraWelcomeAddressLine(): string {
 export const SOLARA_CONTENT_REVIEWED_ON = "2026-04-04" as const;
 
 export const SOLARA_PAGE_TITLE_ABSOLUTE =
-  `Lennar Solara North Las Vegas — new homes & REALTOR® help | Dr. Jan Duffy | ${SITE_NAME}` as const;
+  `Lennar Solara North Las Vegas — new homes & REALTOR® help | ${SITE_NAME}` as const;
 
 export const SOLARA_PAGE_DESCRIPTION =
   "Lennar Solara: gated Lennar townhomes in North Las Vegas. Dr. Jan Duffy, REALTOR® with Berkshire Hathaway HomeServices Nevada Properties, offers independent buyer/seller guidance—not the builder sales office. Browse homes on her client search; verify pricing, hours, and promotions on Lennar’s official Solara page.";

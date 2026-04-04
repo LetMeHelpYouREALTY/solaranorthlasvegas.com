@@ -1,5 +1,11 @@
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
-import { AGENT, CONTACT_EMAILS, PRIMARY_CONTACT_EMAIL, SITE_NAME } from "@/lib/site-contact";
+import {
+  AGENT,
+  CONTACT_EMAILS,
+  PRIMARY_CONTACT_EMAIL,
+  SITE_NAME,
+  SITE_NAME_SHORT,
+} from "@/lib/site-contact";
 import {
   DR_JAN_CLIENT_ONBOARDING_URL,
   DR_JAN_CLIENT_SEARCH_URL,
@@ -89,15 +95,16 @@ export function SolaraPageContent() {
       </section>
 
       <section className="content-panel" aria-labelledby="visit-heading">
-        <h2 id="visit-heading">Sales office location (builder-managed)</h2>
+        <h2 id="visit-heading">Office location (212 Summer Park Ave)</h2>
         <p>
-          The builder lists this welcome center address:{" "}
-          <strong>{formatSolaraWelcomeAddressLine()}</strong>. Appointments and hours are set by the
-          builder — confirm on{" "}
+          <strong>{formatSolaraWelcomeAddressLine()}</strong> is Dr. Jan Duffy’s{" "}
+          <strong>{SITE_NAME_SHORT} office</strong> for real estate client correspondence.
+          Lennar lists the same location as the community welcome center —{" "}
+          <strong>appointments and builder sales hours are set by the builder</strong>. Confirm on{" "}
           <a href={LENNAR_SOLARA_OFFICIAL_URL} rel="noopener noreferrer" target="_blank">
             Lennar’s official Solara new homes page — North Las Vegas
           </a>{" "}
-          before you visit.
+          before you visit for new-home sales.
         </p>
         <p style={{ marginBottom: 0 }}>
           <a

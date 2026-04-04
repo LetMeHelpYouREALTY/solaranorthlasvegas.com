@@ -133,15 +133,53 @@ html {
   min-height: 72vh;
 }
 
+/* Soft ambient wash behind hero copy (light theme); keeps header readable */
+.home-hero-backdrop {
+  position: relative;
+  isolation: isolate;
+}
+
+.home-hero-backdrop::before {
+  content: "";
+  position: absolute;
+  inset: -4% -8% 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  border-radius: 0 0 50% 50% / 0 0 28% 28%;
+  background:
+    radial-gradient(ellipse 95% 65% at 50% -5%, rgba(37, 99, 235, 0.14), transparent 58%),
+    radial-gradient(ellipse 70% 45% at 92% 35%, rgba(79, 70, 229, 0.09), transparent 52%);
+}
+
+[data-theme="light"] .home-hero-backdrop::before {
+  opacity: 1;
+}
+
+.home-hero-backdrop > * {
+  position: relative;
+  z-index: 1;
+}
+
 .home-hero-surface {
   width: 100%;
   max-width: 36rem;
   margin: 0 auto;
-  padding: clamp(1.5rem, 4vw, 2.25rem);
-  border-radius: 1rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: 1.125rem;
   border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
-  background: color-mix(in srgb, currentColor 4%, transparent);
-  box-shadow: 0 12px 40px color-mix(in srgb, currentColor 6%, transparent);
+  background: color-mix(in srgb, var(--page-background, #fff) 88%, transparent);
+  box-shadow:
+    0 1px 0 color-mix(in srgb, currentColor 6%, transparent),
+    0 20px 50px -12px color-mix(in srgb, currentColor 8%, transparent),
+    0 0 0 1px color-mix(in srgb, currentColor 4%, transparent);
+}
+
+[data-theme="dark"] .home-hero-surface {
+  background: color-mix(in srgb, currentColor 5%, transparent);
+  box-shadow:
+    0 20px 48px -14px rgba(0, 0, 0, 0.45),
+    0 0 0 1px color-mix(in srgb, currentColor 10%, transparent);
 }
 
 .home-hero-cta-group {
@@ -164,9 +202,30 @@ html {
   font-size: clamp(1.15rem, 2.8vw, 1.35rem);
   font-weight: 700;
   line-height: 1.25;
-  margin: 0 0 1.25rem;
+  margin: 0 auto 1.35rem;
   text-align: center;
   letter-spacing: -0.02em;
+  max-width: 36rem;
+  position: relative;
+  padding-bottom: 0.65rem;
+}
+
+.v0-section-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(4.5rem, 28%);
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, currentColor 18%, transparent),
+    color-mix(in srgb, #2563eb 55%, transparent),
+    color-mix(in srgb, currentColor 18%, transparent)
+  );
+  opacity: 0.85;
 }
 
 .aeo-faq-section {
@@ -184,9 +243,26 @@ html {
 .aeo-faq-card {
   margin: 0;
   padding: 1.15rem 1.25rem;
-  border-radius: 0.65rem;
+  border-radius: 0.75rem;
   border: 1px solid color-mix(in srgb, currentColor 11%, transparent);
   background: color-mix(in srgb, currentColor 3.5%, transparent);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.aeo-faq-card:hover {
+  border-color: color-mix(in srgb, currentColor 18%, transparent);
+  box-shadow: 0 10px 28px -8px color-mix(in srgb, currentColor 10%, transparent);
+  transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aeo-faq-card {
+    transition: none;
+  }
+
+  .aeo-faq-card:hover {
+    transform: none;
+  }
 }
 
 .aeo-faq-card h3 {
@@ -204,16 +280,27 @@ html {
 }
 
 .realscout-section-shell {
-  border-radius: 0.75rem;
+  border-radius: 1rem;
   border: 1px solid color-mix(in srgb, currentColor 11%, transparent);
   background: color-mix(in srgb, currentColor 3%, transparent);
-  padding: clamp(1.25rem, 3vw, 1.75rem);
+  padding: clamp(1.35rem, 3.2vw, 2rem);
   box-sizing: border-box;
+  box-shadow: 0 14px 40px -18px color-mix(in srgb, currentColor 9%, transparent);
 }
 
 .realscout-section-shell .v0-section-heading {
   text-align: left;
   margin-bottom: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  max-width: none;
+  padding-bottom: 0.5rem;
+}
+
+.realscout-section-shell .v0-section-heading::after {
+  left: 0;
+  transform: none;
+  width: 3rem;
 }
 
 .content-panel {
@@ -598,12 +685,51 @@ realscout-office-listings {
   box-sizing: border-box;
 }
 
-.home-hero-calendly-cta:hover {
-  border-color: color-mix(in srgb, currentColor 28%, transparent);
-  background: color-mix(in srgb, currentColor 11%, transparent);
+.home-hero-calendly-cta--primary {
+  border-color: transparent;
+  background: linear-gradient(165deg, #2563eb 0%, #1d4ed8 55%, #1e40af 100%);
+  color: #f8fafc;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.home-hero-calendly-cta--primary:hover {
+  border-color: transparent;
+  background: linear-gradient(165deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.42);
+  color: #fff;
 }
 
 .home-hero-calendly-cta:focus-visible {
   outline: 2px solid color-mix(in srgb, currentColor 40%, transparent);
   outline-offset: 2px;
+}
+
+.home-hero-calendly-cta--primary:focus-visible {
+  outline-color: #93c5fd;
+}
+
+.home-hero-gbp-link {
+  margin: 0.5rem auto 0;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  max-width: 28rem;
+  opacity: 0.92;
+}
+
+.home-hero-gbp-link a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+/* Calendly floating badge — depth + z-index above sticky header */
+.calendly-badge-widget {
+  z-index: 60 !important;
+}
+
+.calendly-badge-content {
+  border-radius: 9999px !important;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.2) !important;
 }

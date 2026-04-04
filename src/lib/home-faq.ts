@@ -1,3 +1,5 @@
+import { SITE_NAME, SITE_NAME_SHORT } from "@/lib/site-contact";
+
 /**
  * Static FAQ copy for the homepage — keep answers accurate; pair with FAQPage JSON-LD.
  * Update when GBP or service scope changes.
@@ -11,7 +13,7 @@ export const HOME_FAQ_ITEMS: HomeFaqItem[] = [
   {
     question: "What is Solara North Las Vegas?",
     answer:
-      "Solara North Las Vegas is the client-facing brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice, affiliated with Berkshire Hathaway HomeServices Nevada Properties.",
+      `${SITE_NAME} is the full public brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice (${SITE_NAME_SHORT} is the short name). The practice is affiliated with Berkshire Hathaway HomeServices Nevada Properties.`,
   },
   {
     question: "Which areas do you serve?",

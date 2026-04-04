@@ -2,17 +2,18 @@
 
 import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { AGENT, CONTACT_EMAILS, SITE_NAME } from "@/lib/site-contact";
+import { AGENT, CONTACT_EMAILS, SITE_NAME, getOptionalGbpMapsUrl } from "@/lib/site-contact";
 import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
 import Link from "next/link";
 
 export function HomeHero() {
   const mailPrimary = `mailto:${CONTACT_EMAILS.drDuffy}`;
+  const gbpMapsUrl = getOptionalGbpMapsUrl();
 
   return (
     <Column as="main" id="page-top" fillWidth padding="0" className="home-hero-stack">
       <SiteHeader />
-      <Column fillWidth center padding="l" style={{ flex: 1 }}>
+      <Column fillWidth center padding="l" style={{ flex: 1 }} className="home-hero-backdrop">
         <div className="home-hero-surface">
           <Column fillWidth horizontal="center" gap="l" align="center">
             <Badge
@@ -54,21 +55,15 @@ export function HomeHero() {
             </Text>
             <div className="home-hero-cta-group">
               <Button
-                id="email-primary"
-                href={mailPrimary}
+                id="home-value-cta"
+                href="/home-value"
                 data-border="rounded"
                 weight="default"
-                arrowIcon
               >
-                Email Dr. Jan Duffy
+                Free home evaluation
               </Button>
-              <Button
-                id="contact-cta"
-                href="/contact"
-                data-border="rounded"
-                weight="default"
-              >
-                Contact
+              <Button id="search-cta" href="/search" data-border="rounded" weight="default">
+                Search
               </Button>
               <Button
                 id="neighborhoods-cta"
@@ -78,10 +73,26 @@ export function HomeHero() {
               >
                 Neighborhoods
               </Button>
-              <CalendlyPopupLink className="home-hero-calendly-cta">
-                Schedule 15 min with Dr. Jan Duffy
+              <CalendlyPopupLink className="home-hero-calendly-cta home-hero-calendly-cta--primary">
+                Schedule a time with Dr. Jan Duffy
               </CalendlyPopupLink>
             </div>
+            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="8" wrap="balance">
+              <a href={mailPrimary} style={{ fontWeight: 600, textDecoration: "underline" }}>
+                Email Dr. Jan Duffy
+              </a>
+              {" · "}
+              <Link href="/contact" style={{ fontWeight: 600, textDecoration: "underline" }}>
+                Contact form
+              </Link>
+            </Text>
+            {gbpMapsUrl ? (
+              <p className="home-hero-gbp-link">
+                <a href={gbpMapsUrl} rel="noopener noreferrer" target="_blank">
+                  See what people are saying about North Las Vegas on Google
+                </a>
+              </p>
+            ) : null}
             <Text variant="body-default-s" onBackground="neutral-weak" marginTop="4" wrap="balance">
               Listings support:{" "}
               <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`} style={{ fontWeight: 600 }}>

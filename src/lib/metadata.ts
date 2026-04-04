@@ -1,4 +1,4 @@
-import { SITE_HOSTNAME, SITE_NAME, SITE_ORIGIN } from "@/lib/site-contact";
+import { SITE_HOSTNAME, SITE_NAME, SITE_NAME_SHORT, SITE_ORIGIN } from "@/lib/site-contact";
 import type { Metadata } from "next";
 
 const googleVerification = process.env.GOOGLE_SITE_VERIFICATION?.trim();
@@ -62,12 +62,12 @@ export function buildHomeMetadata(input: {
     metadataBase: new URL(SITE_ORIGIN),
     title: {
       default: input.title,
-      template: `%s | ${SITE_NAME}`,
+      template: `%s | ${SITE_NAME_SHORT}`,
     },
     description: input.description,
-    applicationName: SITE_NAME,
+    applicationName: SITE_NAME_SHORT,
     authors: [{ name: "Dr. Jan Duffy", url: SITE_ORIGIN }],
-    publisher: SITE_NAME,
+    publisher: SITE_NAME_SHORT,
     creator: "Dr. Jan Duffy",
     alternates: {
       canonical,
@@ -91,7 +91,7 @@ export function buildHomeMetadata(input: {
       type: "website",
       locale: "en_US",
       url: canonical,
-      siteName: SITE_NAME,
+      siteName: SITE_NAME_SHORT,
       countryName: "United States",
       title: input.title,
       description: input.description,
@@ -100,7 +100,7 @@ export function buildHomeMetadata(input: {
             images: [
               {
                 url: ogAbsolute,
-                alt: `${SITE_NAME} — North Las Vegas real estate`,
+                alt: `${SITE_NAME_SHORT} — North Las Vegas real estate`,
               },
             ],
           }
@@ -117,7 +117,9 @@ export function buildHomeMetadata(input: {
     keywords: [
       "North Las Vegas real estate",
       "North Las Vegas homes for sale",
-      "Solara North Las Vegas",
+      SITE_NAME_SHORT,
+      SITE_NAME,
+      "Homes By Dr. Jan Duffy",
       "Dr. Jan Duffy REALTOR",
       SITE_HOSTNAME,
     ],
@@ -141,6 +143,8 @@ export function buildSubpageMetadata(input: {
 }): Metadata {
   const canonical = getCanonicalUrl(input.path);
   const keywords = input.keywords ?? [
+    SITE_NAME_SHORT,
+    SITE_NAME,
     "Dr. Jan Duffy REALTOR",
     "North Las Vegas real estate",
     "new construction North Las Vegas",
@@ -152,9 +156,9 @@ export function buildSubpageMetadata(input: {
     metadataBase: new URL(SITE_ORIGIN),
     title: { absolute: input.titleAbsolute },
     description: input.description,
-    applicationName: SITE_NAME,
+    applicationName: SITE_NAME_SHORT,
     authors: [{ name: "Dr. Jan Duffy", url: SITE_ORIGIN }],
-    publisher: SITE_NAME,
+    publisher: SITE_NAME_SHORT,
     creator: "Dr. Jan Duffy",
     alternates: {
       canonical,
@@ -178,7 +182,7 @@ export function buildSubpageMetadata(input: {
       type: "website",
       locale: "en_US",
       url: canonical,
-      siteName: SITE_NAME,
+      siteName: SITE_NAME_SHORT,
       countryName: "United States",
       title: input.titleAbsolute,
       description: input.description,

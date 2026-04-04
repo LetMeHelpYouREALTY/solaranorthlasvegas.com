@@ -1,10 +1,10 @@
-import { SITE_NAME } from "@/lib/site-contact";
+import { SITE_NAME, SITE_NAME_SHORT } from "@/lib/site-contact";
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE_NAME,
-    short_name: "Dr. Jan NLV",
+    short_name: SITE_NAME_SHORT,
     description:
       "North Las Vegas real estate with Dr. Jan Duffy — Berkshire Hathaway HomeServices Nevada Properties.",
     start_url: "/",

@@ -1,8 +1,13 @@
 /**
  * Single source of truth for Solara North Las Vegas contact and entity fields.
  * Keep visible NAP, JSON-LD, and GBP aligned when phone or address are finalized.
+ *
+ * - **SITE_NAME** — Full public brand line (header, footer, long-form copy).
+ * - **SITE_NAME_SHORT** — Compact name for title templates, manifest `short_name`, tabs/OG `siteName`.
  */
-export const SITE_NAME = "Solara North Las Vegas" as const;
+export const SITE_NAME = "Solara North Las Vegas | Homes By Dr. Jan Duffy" as const;
+
+export const SITE_NAME_SHORT = "Solara North Las Vegas" as const;
 
 export const SITE_HOSTNAME = "solaranorthlasvegas.com" as const;
 
@@ -48,6 +53,12 @@ export function getOptionalPostalAddress(): PostalAddressParts | null {
 /** Single-line address for visible footer — same data as JSON-LD PostalAddress */
 export function formatPostalAddressLine(parts: PostalAddressParts): string {
   return `${parts.streetAddress}, ${parts.addressLocality}, ${parts.addressRegion} ${parts.postalCode}`;
+}
+
+/** Google Maps / Business Profile URL for “reviews on Google” links when set */
+export function getOptionalGbpMapsUrl(): string | undefined {
+  const u = process.env.NEXT_PUBLIC_GBP_MAPS_URL?.trim();
+  return u || undefined;
 }
 
 /** Profile URLs for Organization `sameAs` (GBP maps link, social) — must be real, public URLs */

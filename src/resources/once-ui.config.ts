@@ -1,5 +1,5 @@
 // Canonical site URL and contact — see src/lib/site-contact.ts
-import { PRIMARY_CONTACT_EMAIL, SITE_NAME, SITE_ORIGIN } from "@/lib/site-contact";
+import { PRIMARY_CONTACT_EMAIL, SITE_NAME, SITE_NAME_SHORT, SITE_ORIGIN } from "@/lib/site-contact";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -61,15 +61,15 @@ const effects = {
     radius: 100,
   },
   gradient: {
-    display: false,
+    display: true,
     x: 50,
-    y: 0,
-    width: 100,
-    height: 100,
-    tilt: 0,
+    y: 8,
+    width: 110,
+    height: 85,
+    tilt: -6,
     colorStart: "brand-background-strong",
-    colorEnd: "static-transparent",
-    opacity: 50,
+    colorEnd: "neutral-background-weak",
+    opacity: 28,
   },
   dots: {
     display: true,
@@ -97,7 +97,7 @@ const effects = {
 const meta = {
   home: {
     path: "/",
-    title: `${SITE_NAME} | North Las Vegas Real Estate`,
+    title: `${SITE_NAME_SHORT} | North Las Vegas Real Estate`,
     description:
       "North Las Vegas and Las Vegas Valley homes with Dr. Jan Duffy, REALTOR® — Berkshire Hathaway HomeServices Nevada Properties. Email for buying, selling, and local market guidance.",
     image: "/images/og/home.jpg",
@@ -110,7 +110,7 @@ const meta = {
 const schema = {
   logo: "",
   type: "Organization",
-  name: SITE_NAME,
+  name: SITE_NAME_SHORT,
   description: meta.home.description,
   email: PRIMARY_CONTACT_EMAIL,
 };
