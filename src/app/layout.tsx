@@ -38,6 +38,7 @@ export default function RootLayout({
       as="html"
       lang="en"
       fillWidth
+      data-theme="dark"
       className={classNames(fonts.heading.variable, fonts.code.variable)}
     >
       <DynamicSchema />

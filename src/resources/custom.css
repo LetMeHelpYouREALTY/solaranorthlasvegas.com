@@ -214,8 +214,13 @@ html[data-theme="dark"] {
 }
 
 [data-theme="dark"] .home-hero-wordmark--light,
-[data-theme="light"] .home-hero-wordmark--dark {
+[data-theme="light"] .home-hero-wordmark--dark,
+.home-hero-wordmark--light {
   display: none;
+}
+
+[data-theme="light"] .home-hero-wordmark--light {
+  display: block;
 }
 
 .home-hero-brand-divider {
@@ -257,7 +262,8 @@ html[data-theme="dark"] {
 }
 
 .home-hero-photo-wrap {
-  width: auto;
+  width: 13rem;
+  height: 13rem;
   max-width: 13rem;
   margin: 0.5rem auto 0;
 }
@@ -325,17 +331,12 @@ html[data-theme="dark"] {
   inset: -4% -8% 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0;
+  opacity: 1;
   border-radius: 0 0 50% 50% / 0 0 28% 28%;
   background: radial-gradient(ellipse 92% 58% at 50% -8%, rgba(201, 162, 39, 0.14), transparent 58%);
 }
 
-[data-theme="dark"] .home-hero-backdrop::before {
-  opacity: 1;
-}
-
 [data-theme="light"] .home-hero-backdrop::before {
-  opacity: 1;
   background: radial-gradient(ellipse 90% 55% at 50% 0%, rgba(201, 162, 39, 0.1), transparent 55%);
 }
 
