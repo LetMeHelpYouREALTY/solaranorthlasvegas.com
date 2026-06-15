@@ -1,10 +1,8 @@
-"use client";
-
 import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
-import { SITE_IMAGE_PATHS, publicImageSrc } from "@/lib/site-images";
+import { SITE_IMAGE_PATHS } from "@/lib/site-images";
 import { AGENT, CONTACT_EMAILS, SITE_NAME, getOptionalGbpMapsUrl } from "@/lib/site-contact";
-import { Badge, Button, Column, Heading, Line, Logo, Text } from "@once-ui-system/core";
+import Image from "next/image";
 import Link from "next/link";
 
 export function HomeHero() {
@@ -12,94 +10,97 @@ export function HomeHero() {
   const gbpMapsUrl = getOptionalGbpMapsUrl();
 
   return (
-    <Column as="main" id="page-top" fillWidth padding="0" className="home-hero-stack">
+    <main id="page-top" className="home-hero-stack">
       <SiteHeader />
-      <Column fillWidth center padding="l" style={{ flex: 1 }} className="home-hero-backdrop">
+      <div className="home-hero-backdrop" style={{ flex: 1, display: "flex", justifyContent: "center", padding: "var(--static-space-24, 1.5rem)" }}>
         <div className="home-hero-surface">
-          <Column fillWidth horizontal="center" gap="l" align="center">
+          <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "var(--static-space-24, 1.5rem)", width: "100%" }}>
             <div className="home-hero-brand-badge">
-              <Badge
-                textVariant="code-default-s"
-                border="neutral-alpha-medium"
-                onBackground="neutral-medium"
-                vertical="center"
-                gap="16"
+              <div
+                className="home-hero-brand-pill"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "1rem",
+                  padding: "0.35rem 1rem",
+                  borderRadius: "999px",
+                  border: "1px solid var(--neutral-alpha-medium, rgba(255,255,255,0.12))",
+                }}
               >
-                <Logo dark icon="/trademarks/wordmark-dark.svg" href="/" size="xs" />
-                <Logo light icon="/trademarks/wordmark-light.svg" href="/" size="xs" />
-                <Line vert background="neutral-alpha-strong" />
-                <Text marginX="4">{SITE_NAME}</Text>
-              </Badge>
+                <Link href="/" aria-label={SITE_NAME} className="home-hero-wordmark-link">
+                  <img
+                    src="/trademarks/wordmark-dark.svg"
+                    alt=""
+                    className="home-hero-wordmark home-hero-wordmark--dark"
+                    width={96}
+                    height={20}
+                  />
+                  <img
+                    src="/trademarks/wordmark-light.svg"
+                    alt=""
+                    className="home-hero-wordmark home-hero-wordmark--light"
+                    width={96}
+                    height={20}
+                  />
+                </Link>
+                <span aria-hidden="true" className="home-hero-brand-divider" />
+                <span className="home-hero-brand-name">{SITE_NAME}</span>
+              </div>
             </div>
-            <Heading as="h1" variant="display-strong-xl" marginTop="24">
-              North Las Vegas real estate with Dr. Jan Duffy
-            </Heading>
-            <Text
-              variant="heading-default-xl"
-              onBackground="neutral-weak"
-              wrap="balance"
-              marginBottom="8"
-            >
+
+            <h1 className="home-hero-h1">North Las Vegas real estate with Dr. Jan Duffy</h1>
+
+            <p className="home-hero-lead">
               Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and
               strategy with Berkshire Hathaway HomeServices Nevada Properties.
-            </Text>
-            <Text
-              variant="body-default-s"
-              onBackground="neutral-weak"
-              marginBottom="16"
-              wrap="balance"
-            >
+            </p>
+
+            <p className="home-hero-copy">
               Curious about{" "}
-              <Link href="/solara" style={{ textDecoration: "underline", fontWeight: 600 }}>
+              <Link href="/solara" className="home-hero-inline-link">
                 new construction in North Las Vegas (including the Solara area)
               </Link>
               ? Dr. Jan Duffy can walk you through what to expect—separate from the builder’s sales
               team.
-            </Text>
+            </p>
+
             <div className="home-hero-photo-wrap">
-              <img
-                src={publicImageSrc(SITE_IMAGE_PATHS.homeHeroAgent)}
+              <Image
+                src={SITE_IMAGE_PATHS.homeHeroAgent}
                 alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
                 width={208}
                 height={208}
+                priority
+                sizes="208px"
                 className="home-hero-photo"
-                loading="eager"
-                decoding="async"
               />
             </div>
+
             <div className="home-hero-cta-group">
-              <Button
-                id="home-value-cta"
-                href="/home-value"
-                data-border="rounded"
-                weight="strong"
-              >
+              <Link href="/home-value" className="home-hero-cta" id="home-value-cta">
                 Free home evaluation
-              </Button>
-              <Button id="search-cta" href="/search" data-border="rounded" weight="strong">
+              </Link>
+              <Link href="/search" className="home-hero-cta" id="search-cta">
                 Search
-              </Button>
-              <Button
-                id="neighborhoods-cta"
-                href="/neighborhoods"
-                data-border="rounded"
-                weight="strong"
-              >
+              </Link>
+              <Link href="/neighborhoods" className="home-hero-cta" id="neighborhoods-cta">
                 Neighborhoods
-              </Button>
+              </Link>
               <CalendlyPopupLink className="home-hero-calendly-cta home-hero-calendly-cta--primary">
                 Schedule a time with Dr. Jan Duffy
               </CalendlyPopupLink>
             </div>
-            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="8" wrap="balance">
-              <a href={mailPrimary} style={{ fontWeight: 600, textDecoration: "underline" }}>
+
+            <p className="home-hero-copy home-hero-copy--tight">
+              <a href={mailPrimary} className="home-hero-inline-link">
                 Email Dr. Jan Duffy
               </a>
               {" · "}
-              <Link href="/contact" style={{ fontWeight: 600, textDecoration: "underline" }}>
+              <Link href="/contact" className="home-hero-inline-link">
                 Contact form
               </Link>
-            </Text>
+            </p>
+
             {gbpMapsUrl ? (
               <p className="home-hero-gbp-link">
                 <a href={gbpMapsUrl} rel="noopener noreferrer" target="_blank">
@@ -107,18 +108,20 @@ export function HomeHero() {
                 </a>
               </p>
             ) : null}
-            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="4" wrap="balance">
+
+            <p className="home-hero-copy home-hero-copy--tight">
               Listings support:{" "}
-              <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`} style={{ fontWeight: 600 }}>
+              <a href={`mailto:${CONTACT_EMAILS.drDuffySells}`} className="home-hero-inline-link">
                 {CONTACT_EMAILS.drDuffySells}
               </a>
-            </Text>
-            <Text variant="body-default-s" onBackground="neutral-weak" marginTop="12" wrap="balance">
+            </p>
+
+            <p className="home-hero-license">
               Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
-            </Text>
-          </Column>
+            </p>
+          </div>
         </div>
-      </Column>
-    </Column>
+      </div>
+    </main>
   );
 }

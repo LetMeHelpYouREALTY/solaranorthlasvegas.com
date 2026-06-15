@@ -5,6 +5,7 @@ import {
   CALENDLY_INLINE_HEIGHT_PX,
   CALENDLY_INLINE_MIN_WIDTH_PX,
 } from "@/lib/calendly-config";
+import { loadCalendlyWidget } from "@/lib/calendly-loader";
 import { useEffect, useRef } from "react";
 
 type CalendlyInlineEmbedProps = {
@@ -12,7 +13,7 @@ type CalendlyInlineEmbedProps = {
 };
 
 /**
- * Inline scheduling embed; waits for global Calendly script from root layout.
+ * Inline scheduling embed; lazy-loads Calendly when the contact page mounts.
  */
 export function CalendlyInlineEmbed({ className }: CalendlyInlineEmbedProps) {
   const parentRef = useRef<HTMLDivElement>(null);
@@ -30,17 +31,19 @@ export function CalendlyInlineEmbed({ className }: CalendlyInlineEmbedProps) {
       return true;
     };
 
-    if (tryInit()) return () => {
-      cancelled = true;
-    };
-
-    const id = window.setInterval(() => {
-      if (tryInit()) window.clearInterval(id);
-    }, 100);
+    void loadCalendlyWidget()
+      .then(() => {
+        if (tryInit()) return;
+        const id = window.setInterval(() => {
+          if (tryInit()) window.clearInterval(id);
+        }, 100);
+      })
+      .catch(() => {
+        /* Contact page still has mailto + form if embed fails */
+      });
 
     return () => {
       cancelled = true;
-      window.clearInterval(id);
     };
   }, []);
 
