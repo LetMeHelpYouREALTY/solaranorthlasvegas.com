@@ -1,6 +1,7 @@
 "use client";
 
 import { CALENDLY_EVENT_URL } from "@/lib/calendly-config";
+import { loadCalendlyWidget, prefetchCalendlyWidget } from "@/lib/calendly-loader";
 import type { MouseEvent, ReactNode } from "react";
 
 type CalendlyPopupLinkProps = {
@@ -9,14 +10,21 @@ type CalendlyPopupLinkProps = {
 };
 
 /**
- * Opens Calendly popup when the widget script is ready; otherwise opens the event URL in a new tab.
+ * Opens Calendly popup after lazy-loading the widget; falls back to the event URL in a new tab.
  */
 export function CalendlyPopupLink({ children = "Schedule time with me", className }: CalendlyPopupLinkProps) {
-  function handleClick(e: MouseEvent<HTMLAnchorElement>) {
-    if (typeof window !== "undefined" && window.Calendly) {
-      e.preventDefault();
-      window.Calendly.initPopupWidget({ url: CALENDLY_EVENT_URL });
+  async function handleClick(e: MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault();
+    try {
+      await loadCalendlyWidget();
+      window.Calendly?.initPopupWidget({ url: CALENDLY_EVENT_URL });
+    } catch {
+      window.open(CALENDLY_EVENT_URL, "_blank", "noopener,noreferrer");
     }
+  }
+
+  function handleIntent() {
+    prefetchCalendlyWidget();
   }
 
   return (
@@ -26,6 +34,8 @@ export function CalendlyPopupLink({ children = "Schedule time with me", classNam
       rel="noopener noreferrer"
       target="_blank"
       onClick={handleClick}
+      onFocus={handleIntent}
+      onPointerEnter={handleIntent}
     >
       {children}
     </a>
