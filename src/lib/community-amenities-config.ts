@@ -33,7 +33,7 @@ export type AmenityCategoryId =
 export type AmenityCategoryConfig = {
   id: AmenityCategoryId;
   label: string;
-  /** Places API (New) `includedPrimaryTypes` — first type used for searchNearby */
+  /** Places API (New) `includedPrimaryTypes` — combined in one searchNearby per category */
   primaryTypes: string[];
   ariaLabel: string;
 };
@@ -129,9 +129,11 @@ export type CuratedAmenity = {
   postalCode: string;
   category: AmenityCategoryId;
   schemaType: CuratedAmenitySchemaType;
+  /** Official business or agency page used to verify name and address */
+  sourceUrl: string;
 };
 
-/** Verified names and addresses — used for fallback UI and JSON-LD ItemList */
+/** Verified names, addresses, and primary sources — fallback UI and JSON-LD ItemList */
 export const CURATED_AMENITIES: CuratedAmenity[] = [
   {
     name: "Albertsons",
@@ -141,6 +143,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89031",
     category: "grocery",
     schemaType: "GroceryStore",
+    sourceUrl: "https://local.albertsons.com/nv/north-las-vegas/3010-w-ann-rd.html",
   },
   {
     name: "Walmart Neighborhood Market",
@@ -150,6 +153,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89031",
     category: "grocery",
     schemaType: "GroceryStore",
+    sourceUrl: "https://www.walmart.com/store/5306-north-las-vegas-nv",
   },
   {
     name: "Smith's Food and Drug",
@@ -159,6 +163,8 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89031",
     category: "grocery",
     schemaType: "GroceryStore",
+    sourceUrl:
+      "https://www.smithsfoodanddrug.com/stores/grocery/nv/north-las-vegas/el-dorado-village/706/00345",
   },
   {
     name: "Craig Ranch Regional Park",
@@ -168,6 +174,8 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89032",
     category: "parks",
     schemaType: "Park",
+    sourceUrl:
+      "https://www.cityofnorthlasvegas.com/things-to-do/parks-and-recreation/parks/craig-ranch-regional-park",
   },
   {
     name: "North Vista Hospital",
@@ -177,6 +185,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89030",
     category: "healthcare",
     schemaType: "Hospital",
+    sourceUrl: "https://northvistahospital.com/contact-us/",
   },
   {
     name: "Centennial Hills Hospital Medical Center",
@@ -186,6 +195,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89149",
     category: "healthcare",
     schemaType: "Hospital",
+    sourceUrl: "https://www.centennialhillshospital.com/patients-visitors/maps-directions",
   },
   {
     name: "Rockwall Grille at Painted Desert Golf Club",
@@ -195,6 +205,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89149",
     category: "restaurants",
     schemaType: "Restaurant",
+    sourceUrl: "https://arcisgolf.com/clubs/painted-desert-golf-club/dining",
   },
   {
     name: "Painted Desert Golf Club",
@@ -204,6 +215,7 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89149",
     category: "golf",
     schemaType: "GolfCourse",
+    sourceUrl: "https://arcisgolf.com/clubs/painted-desert-golf-club",
   },
   {
     name: "Aliante Casino + Hotel",
@@ -213,15 +225,17 @@ export const CURATED_AMENITIES: CuratedAmenity[] = [
     postalCode: "89084",
     category: "shopping",
     schemaType: "ShoppingCenter",
+    sourceUrl: "https://aliante.boydgaming.com/",
   },
   {
     name: "Shadow Ridge High School",
     streetAddress: "5050 Brent Ln",
     addressLocality: "Las Vegas",
     addressRegion: "NV",
-    postalCode: "89130",
+    postalCode: "89131",
     category: "schools",
     schemaType: "School",
+    sourceUrl: "https://www.srhsmustangs.com/",
   },
 ];
 

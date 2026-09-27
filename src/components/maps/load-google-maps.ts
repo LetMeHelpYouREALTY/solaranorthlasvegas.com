@@ -1,4 +1,11 @@
-let loadPromise: Promise<typeof google> | null = null;
+let mapsReady: Promise<void> | null = null;
+
+export let mapsAuthFailed = false;
+if (typeof window !== "undefined") {
+  window.addEventListener("gmaps:auth-failure", () => {
+    mapsAuthFailed = true;
+  });
+}
 
 export function getGoogleMapsApiKey(): string | undefined {
   const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY?.trim();
@@ -10,44 +17,42 @@ export function getGoogleMapsMapId(): string | undefined {
   return id || undefined;
 }
 
-/** Load Maps JavaScript API once per session */
+/** Load Maps JavaScript API once per session (callback + auth-failure handling). */
+export function loadGoogleMaps(apiKey: string): Promise<void> {
+  if (typeof window === "undefined") {
+    return Promise.reject(new Error("ssr"));
+  }
+  if (typeof window.google?.maps?.importLibrary === "function") {
+    return Promise.resolve();
+  }
+  if (mapsReady) {
+    return mapsReady;
+  }
+  mapsReady = new Promise<void>((resolve, reject) => {
+    const cb = "__gmapsReady";
+    (window as unknown as Record<string, () => void>)[cb] = () => resolve();
+    (window as unknown as Record<string, () => void>).gm_authFailure = () => {
+      window.dispatchEvent(new Event("gmaps:auth-failure"));
+      reject(new Error("gm_authFailure"));
+    };
+    const s = document.createElement("script");
+    s.id = "google-maps-js-api";
+    s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(apiKey)}&v=weekly&loading=async&callback=${cb}`;
+    s.async = true;
+    s.onerror = () => {
+      mapsReady = null;
+      reject(new Error("maps script failed"));
+    };
+    document.head.appendChild(s);
+  });
+  return mapsReady;
+}
+
+/** @deprecated alias — prefer loadGoogleMaps after resolving the API key */
 export function loadGoogleMapsApi(): Promise<typeof google> {
   const key = getGoogleMapsApiKey();
   if (!key) {
     return Promise.reject(new Error("NEXT_PUBLIC_GOOGLE_MAPS_API_KEY is not set"));
   }
-  if (typeof window === "undefined") {
-    return Promise.reject(new Error("Google Maps can only load in the browser"));
-  }
-  if (window.google?.maps) {
-    return Promise.resolve(window.google);
-  }
-  if (loadPromise) {
-    return loadPromise;
-  }
-
-  loadPromise = new Promise((resolve, reject) => {
-    const scriptId = "google-maps-js-api";
-    const existing = document.getElementById(scriptId);
-    if (existing) {
-      existing.addEventListener("load", () => resolve(window.google));
-      existing.addEventListener("error", () => reject(new Error("Google Maps script failed")));
-      return;
-    }
-
-    const callbackName = "__solaraMapsInit";
-    (window as unknown as Record<string, () => void>)[callbackName] = () => {
-      resolve(window.google);
-    };
-
-    const script = document.createElement("script");
-    script.id = scriptId;
-    script.async = true;
-    script.defer = true;
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&loading=async&callback=${callbackName}`;
-    script.onerror = () => reject(new Error("Google Maps script failed to load"));
-    document.head.appendChild(script);
-  });
-
-  return loadPromise;
+  return loadGoogleMaps(key).then(() => window.google);
 }

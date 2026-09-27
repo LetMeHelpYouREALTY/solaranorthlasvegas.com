@@ -65,15 +65,15 @@ export function AmenitiesPageContent() {
         <p>
           Craig Ranch Regional Park (628 W Craig Rd, North Las Vegas) is a 170-acre city park with
           trails, sports fields, and community events. It is one of the most common weekend
-          destinations for families in the north valley.
+          destinations for residents in the north valley.
         </p>
       </section>
 
       <section className="content-panel" aria-labelledby="golf-heading">
         <h2 id="golf-heading">Golf</h2>
         <p>
-          Painted Desert Golf Club (5555 Painted Mirage Rd, Las Vegas) offers a championship layout
-          and the Rockwall Grille for dining. Confirm tee times and hours with the club before you
+          Painted Desert Golf Club (5555 Painted Mirage Rd, Las Vegas) includes the Rockwall Grille
+          for public dining. Confirm tee times and hours with the club before you
           visit—schedules can change seasonally.
         </p>
       </section>
@@ -100,9 +100,16 @@ export function AmenitiesPageContent() {
       <section className="content-panel" aria-labelledby="schools-heading">
         <h2 id="schools-heading">Schools</h2>
         <p>
-          School assignments and ratings change. Shadow Ridge High School (5050 Brent Ln, Las Vegas)
-          is one campus north-valley families research alongside Solara. Verify current zoning with
-          the Clark County School District before you buy.
+          Which CCSD schools are assigned to {COMMUNITY_DISPLAY_NAME} addresses? Verify with the{" "}
+          <a
+            href="https://zoning.ccsd.net/zoning/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            CCSD Zoning Search
+          </a>{" "}
+          before you buy. Shadow Ridge High School (5050 Brent Ln, Las Vegas) is one campus buyers
+          and households often check from the north valley.
         </p>
       </section>
 

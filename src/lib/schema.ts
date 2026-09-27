@@ -278,6 +278,7 @@ export function buildAmenitiesSupplementaryGraph(
     item: {
       "@type": place.schemaType === "Place" ? "Place" : place.schemaType,
       name: place.name,
+      sameAs: place.sourceUrl,
       address: {
         "@type": "PostalAddress",
         streetAddress: place.streetAddress,

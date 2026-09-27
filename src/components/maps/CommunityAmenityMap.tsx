@@ -1,7 +1,17 @@
 "use client";
 
 import { AmenityStaticList } from "@/components/maps/AmenityStaticList";
-import { getGoogleMapsApiKey, getGoogleMapsMapId, loadGoogleMapsApi } from "@/components/maps/load-google-maps";
+import {
+  buildCommunityInfoWindowContent,
+  buildPlaceInfoWindowContent,
+} from "@/components/maps/map-info-window";
+import {
+  getGoogleMapsApiKey,
+  getGoogleMapsMapId,
+  loadGoogleMaps,
+  mapsAuthFailed,
+} from "@/components/maps/load-google-maps";
+import { searchCategory } from "@/components/maps/search-category-places";
 import {
   AMENITY_CATEGORIES,
   type AmenityCategoryId,
@@ -10,6 +20,7 @@ import {
   COMMUNITY_MAP_EMBED_URL,
   CURATED_AMENITIES,
   getCommunityMarkerLabel,
+  getCuratedForCategory,
   googleMapsDirectionsUrl,
 } from "@/lib/community-amenities-config";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
@@ -22,12 +33,22 @@ type NearbyPlaceRow = {
   id: string;
   name: string;
   address: string;
-  rating?: number;
   directionsUrl: string;
 };
 
 function categoryById(id: AmenityCategoryId) {
   return AMENITY_CATEGORIES.find((c) => c.id === id) ?? AMENITY_CATEGORIES[0];
+}
+
+function curatedRowsForCategory(categoryId: AmenityCategoryId): NearbyPlaceRow[] {
+  return getCuratedForCategory(categoryId).map((place) => ({
+    id: `curated-${place.name}-${place.streetAddress}`,
+    name: place.name,
+    address: `${place.streetAddress}, ${place.addressLocality}, ${place.addressRegion} ${place.postalCode}`,
+    directionsUrl: googleMapsDirectionsUrl(
+      `${place.streetAddress}, ${place.addressLocality}, ${place.addressRegion} ${place.postalCode}`,
+    ),
+  }));
 }
 
 export function CommunityAmenityMap({
@@ -38,8 +59,15 @@ export function CommunityAmenityMap({
   showStaticList?: boolean;
 }) {
   const [activeCategory, setActiveCategory] = useState<AmenityCategoryId>(defaultCategory);
-  const [mode, setMode] = useState<MapMode>(() => (getGoogleMapsApiKey() ? "loading" : "fallback"));
-  const [places, setPlaces] = useState<NearbyPlaceRow[]>([]);
+  const [mode, setMode] = useState<MapMode>(() => {
+    if (!getGoogleMapsApiKey() || mapsAuthFailed) {
+      return "fallback";
+    }
+    return "loading";
+  });
+  const [places, setPlaces] = useState<NearbyPlaceRow[]>(() =>
+    !getGoogleMapsApiKey() ? curatedRowsForCategory(defaultCategory) : [],
+  );
   const [searchStatus, setSearchStatus] = useState<string | null>(null);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -60,34 +88,44 @@ export function CommunityAmenityMap({
     markersRef.current = [];
   }, []);
 
+  const enterFallbackMode = useCallback(() => {
+    clearMarkers();
+    communityMarkerRef.current?.setMap(null);
+    communityMarkerRef.current = null;
+    mapRef.current = null;
+    mapReady.current = false;
+    infoWindowRef.current?.close();
+    setMode("fallback");
+    setPlaces(curatedRowsForCategory(activeCategory));
+    setSearchStatus(null);
+  }, [activeCategory, clearMarkers]);
+
+  useEffect(() => {
+    if (mapsAuthFailed) {
+      enterFallbackMode();
+    }
+    const onAuthFailure = () => {
+      enterFallbackMode();
+    };
+    window.addEventListener("gmaps:auth-failure", onAuthFailure);
+    return () => window.removeEventListener("gmaps:auth-failure", onAuthFailure);
+  }, [enterFallbackMode]);
+
   const runNearbySearch = useCallback(
     async (categoryId: AmenityCategoryId) => {
-      if (!mapRef.current || !mapReady.current) {
+      if (!mapRef.current || !mapReady.current || mode !== "interactive") {
         return;
       }
       setSearchStatus("Searching nearby…");
       clearMarkers();
 
       const category = categoryById(categoryId);
-      const primaryType = category.primaryTypes[0];
+      const center = { lat: COMMUNITY_CENTER.lat, lng: COMMUNITY_CENTER.lng };
 
       try {
-        const googleMaps = await loadGoogleMapsApi();
-        const placesLib = (await googleMaps.maps.importLibrary("places")) as google.maps.PlacesLibrary;
-        const PlaceCtor = placesLib.Place;
-
-        const center = new googleMaps.maps.LatLng(COMMUNITY_CENTER.lat, COMMUNITY_CENTER.lng);
-        const request = {
-          fields: ["displayName", "location", "rating", "formattedAddress", "googleMapsURI"],
-          locationRestriction: {
-            center,
-            radius: 8000,
-          },
-          includedPrimaryTypes: [primaryType],
-          maxResultCount: 15,
-        };
-
-        const { places: nearby } = await PlaceCtor.searchNearby(request);
+        await loadGoogleMaps(getGoogleMapsApiKey() as string);
+        const nearby = await searchCategory(center, categoryId, category.primaryTypes);
+        const googleMaps = window.google;
         const rows: NearbyPlaceRow[] = [];
         const bounds = new googleMaps.maps.LatLngBounds();
         bounds.extend(center);
@@ -101,9 +139,9 @@ export function CommunityAmenityMap({
           if (!loc) {
             continue;
           }
+          const coords = loc.toJSON?.() ?? { lat: loc.lat(), lng: loc.lng() };
           const name = place.displayName ?? "Place";
           const address = place.formattedAddress ?? "";
-          const rating = place.rating ?? undefined;
           const directionsUrl =
             place.googleMapsURI ??
             googleMapsDirectionsUrl(address || `${name}, North Las Vegas, NV`);
@@ -112,48 +150,53 @@ export function CommunityAmenityMap({
             id: `${name}-${address}`,
             name,
             address,
-            rating,
             directionsUrl,
           });
 
           const marker = new googleMaps.maps.Marker({
             map: mapRef.current,
-            position: loc,
+            position: coords,
             title: name,
           });
           marker.addListener("click", () => {
-            const ratingLine =
-              rating != null ? `<p style="margin:0.25rem 0 0;font-size:0.85rem">Rating: ${rating}</p>` : "";
             infoWindowRef.current?.setContent(
-              `<div style="max-width:220px"><strong>${name}</strong><p style="margin:0.35rem 0 0;font-size:0.85rem">${address}</p>${ratingLine}<p style="margin:0.5rem 0 0"><a href="${directionsUrl}" target="_blank" rel="noopener noreferrer">Directions</a></p></div>`,
+              buildPlaceInfoWindowContent(name, address, directionsUrl),
             );
             infoWindowRef.current?.open({ map: mapRef.current, anchor: marker });
           });
           markersRef.current.push(marker);
-          bounds.extend(loc);
+          bounds.extend(coords);
         }
 
         if (communityMarkerRef.current) {
-          bounds.extend(communityMarkerRef.current.getPosition() as google.maps.LatLng);
+          const pos = communityMarkerRef.current.getPosition();
+          if (pos) {
+            bounds.extend(pos);
+          }
         }
         mapRef.current.fitBounds(bounds, 48);
-        setPlaces(rows);
-        setSearchStatus(rows.length ? null : "No results for this filter. Try another category.");
+        setPlaces(rows.length ? rows : curatedRowsForCategory(categoryId));
+        setSearchStatus(rows.length ? null : "Showing curated list for this category.");
       } catch {
-        setPlaces([]);
-        setSearchStatus("Map search unavailable — showing curated list.");
-        setMode("fallback");
+        setPlaces(curatedRowsForCategory(categoryId));
+        setSearchStatus(null);
       }
     },
-    [clearMarkers],
+    [clearMarkers, mode],
   );
 
   const initMap = useCallback(async () => {
-    if (!mapDivRef.current || mapReady.current) {
+    if (mapsAuthFailed || !mapDivRef.current || mapReady.current) {
+      return;
+    }
+    const key = getGoogleMapsApiKey();
+    if (!key) {
+      enterFallbackMode();
       return;
     }
     try {
-      const googleMaps = await loadGoogleMapsApi();
+      await loadGoogleMaps(key);
+      const googleMaps = window.google;
       const mapId = getGoogleMapsMapId();
       const center = { lat: COMMUNITY_CENTER.lat, lng: COMMUNITY_CENTER.lng };
 
@@ -178,7 +221,11 @@ export function CommunityAmenityMap({
           infoWindowRef.current = new googleMaps.maps.InfoWindow();
         }
         infoWindowRef.current.setContent(
-          `<div style="max-width:240px"><strong>${COMMUNITY_DISPLAY_NAME}</strong><p style="margin:0.35rem 0 0;font-size:0.85rem">${getCommunityMarkerLabel()}</p><p style="margin:0.5rem 0 0;font-size:0.85rem">Lennar townhome community in North Las Vegas</p></div>`,
+          buildCommunityInfoWindowContent(
+            COMMUNITY_DISPLAY_NAME,
+            getCommunityMarkerLabel(),
+            "Lennar townhome community in North Las Vegas",
+          ),
         );
         infoWindowRef.current.open({
           map: mapRef.current,
@@ -190,9 +237,9 @@ export function CommunityAmenityMap({
       setMode("interactive");
       await runNearbySearch(activeCategory);
     } catch {
-      setMode("fallback");
+      enterFallbackMode();
     }
-  }, [activeCategory, runNearbySearch]);
+  }, [activeCategory, enterFallbackMode, runNearbySearch]);
 
   useEffect(() => {
     if (mode === "fallback" || observerStarted.current) {
@@ -220,6 +267,8 @@ export function CommunityAmenityMap({
   useEffect(() => {
     if (mode === "interactive") {
       void runNearbySearch(activeCategory);
+    } else if (mode === "fallback") {
+      setPlaces(curatedRowsForCategory(activeCategory));
     }
   }, [activeCategory, mode, runNearbySearch]);
 
@@ -229,6 +278,9 @@ export function CommunityAmenityMap({
       setActiveCategory(id);
     }
   };
+
+  const showResultsList =
+    places.length > 0 && (mode === "interactive" || mode === "fallback");
 
   return (
     <div ref={containerRef} className="community-amenity-map" style={{ width: "100%" }}>
@@ -328,7 +380,7 @@ export function CommunityAmenityMap({
         <p style={{ margin: "0.75rem 0 0", fontSize: "0.875rem", opacity: 0.9 }}>{searchStatus}</p>
       ) : null}
 
-      {mode === "interactive" && places.length > 0 ? (
+      {showResultsList ? (
         <ul
           className="amenity-map-results"
           aria-live="polite"
@@ -344,10 +396,11 @@ export function CommunityAmenityMap({
           {places.map((p) => (
             <li key={p.id}>
               <strong>{p.name}</strong>
-              {p.rating != null ? ` · ${p.rating}★` : ""}
               {p.address ? ` — ${p.address}` : ""}
               {" · "}
-              <a href={p.directionsUrl} rel="noopener noreferrer" target="_blank">Directions</a>
+              <a href={p.directionsUrl} rel="noopener noreferrer" target="_blank">
+                Directions
+              </a>
             </li>
           ))}
         </ul>

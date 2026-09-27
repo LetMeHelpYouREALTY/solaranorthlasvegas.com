@@ -37,6 +37,11 @@ export const AMENITIES_FAQ_ITEMS: HomeFaqItem[] = [
     answer: `This site's Nearby Amenities page (${AMENITIES_PAGE_PATH}) includes an interactive map, category filters, and a written guide to dining, parks, healthcare, and errands around Lennar Solara.`,
   },
   {
+    question: "Which CCSD schools are assigned to Solara addresses?",
+    answer:
+      "School zoning changes. Use the Clark County School District Zoning Search (zoning.ccsd.net) to confirm assignments for a specific Lennar Solara address before you buy—not school ratings or third-party score sites.",
+  },
+  {
     question: "Who can help me buy or sell near Solara?",
     answer:
       "Dr. Jan Duffy (Nevada license S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties offers independent REALTOR guidance for Solara and the wider Las Vegas Valley—start on the contact page or by email.",
