@@ -13,6 +13,7 @@ const FOOTER_NAV = [
   { href: "/buyers", label: "Buyers" },
   { href: "/sellers", label: "Sellers" },
   { href: "/neighborhoods", label: "Neighborhoods" },
+  { href: "/amenities", label: "Nearby amenities" },
   { href: "/search", label: "Search" },
   { href: "/home-value", label: "Home value" },
   { href: "/privacy", label: "Privacy" },

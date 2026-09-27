@@ -11,6 +11,9 @@ import {
   getPublicPhoneE164,
   getSameAsProfileUrls,
 } from "@/lib/site-contact";
+import type { CuratedAmenity } from "@/lib/community-amenities-config";
+import { COMMUNITY_CENTER, COMMUNITY_DISPLAY_NAME } from "@/lib/community-amenities-config";
+import { AMENITIES_PAGE_DESCRIPTION, AMENITIES_PAGE_TITLE_ABSOLUTE } from "@/lib/amenities-page";
 import {
   DR_JAN_CLIENT_SEARCH_URL,
   LENNAR_SOLARA_OFFICIAL_URL,
@@ -223,4 +226,110 @@ export function buildSolaraSupplementaryGraph(): Record<string, unknown>[] {
 
 export function serializeSolaraSupplementaryLd(): string {
   return serializeJsonLdGraph(buildSolaraSupplementaryGraph());
+}
+
+const AMENITIES_PATH = "/amenities" as const;
+const SOLARA_COMMUNITY_PLACE_ID = `${getCanonicalUrl(SOLARA_PATH)}#solara-community`;
+
+/** WebPage, Place (geo), ItemList, BreadcrumbList, agent areaServed — /amenities only */
+export function buildAmenitiesSupplementaryGraph(
+  curated: CuratedAmenity[],
+  faqItems: HomeFaqItem[],
+): Record<string, unknown>[] {
+  const pageUrl = getCanonicalUrl(AMENITIES_PATH);
+  const homeUrl = getCanonicalUrl("/");
+
+  const itemListElements = curated.map((place, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": place.schemaType === "Place" ? "Place" : place.schemaType,
+      name: place.name,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: place.streetAddress,
+        addressLocality: place.addressLocality,
+        addressRegion: place.addressRegion,
+        postalCode: place.postalCode,
+        addressCountry: "US",
+      },
+    },
+  }));
+
+  return [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: AMENITIES_PAGE_TITLE_ABSOLUTE,
+      description: AMENITIES_PAGE_DESCRIPTION,
+      isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+      about: { "@id": SOLARA_COMMUNITY_PLACE_ID },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
+    },
+    {
+      "@type": "Place",
+      "@id": SOLARA_COMMUNITY_PLACE_ID,
+      name: `${COMMUNITY_DISPLAY_NAME} — North Las Vegas, NV (Lennar community)`,
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: COMMUNITY_CENTER.lat,
+        longitude: COMMUNITY_CENTER.lng,
+      },
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: SOLARA_WELCOME_ADDRESS.streetAddress,
+        addressLocality: SOLARA_WELCOME_ADDRESS.addressLocality,
+        addressRegion: SOLARA_WELCOME_ADDRESS.addressRegion,
+        postalCode: SOLARA_WELCOME_ADDRESS.postalCode,
+        addressCountry: SOLARA_WELCOME_ADDRESS.addressCountry,
+      },
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${pageUrl}#featured-amenities`,
+      name: `Featured places near ${COMMUNITY_DISPLAY_NAME}`,
+      itemListElement: itemListElements,
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: SITE_NAME,
+          item: homeUrl,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Nearby amenities",
+          item: pageUrl,
+        },
+      ],
+    },
+    buildFaqPageJsonLd(faqItems, AMENITIES_PATH),
+    {
+      "@type": "RealEstateAgent",
+      "@id": `${SITE_ORIGIN}/#agent`,
+      name: AGENT.fullName,
+      areaServed: {
+        "@type": "Place",
+        name: COMMUNITY_DISPLAY_NAME,
+        containedInPlace: {
+          "@type": "City",
+          name: "North Las Vegas",
+          containedInPlace: { "@type": "State", name: "Nevada" },
+        },
+      },
+    },
+  ];
+}
+
+export function serializeAmenitiesSupplementaryLd(
+  curated: CuratedAmenity[],
+  faqItems: HomeFaqItem[],
+): string {
+  return serializeJsonLdGraph(buildAmenitiesSupplementaryGraph(curated, faqItems));
 }

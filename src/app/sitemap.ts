@@ -14,6 +14,7 @@ const STATIC_PATHS: {
   { path: "/buyers", changeFrequency: "weekly", priority: 0.85 },
   { path: "/sellers", changeFrequency: "weekly", priority: 0.85 },
   { path: "/neighborhoods", changeFrequency: "weekly", priority: 0.88 },
+  { path: "/amenities", changeFrequency: "monthly", priority: 0.86 },
   { path: "/search", changeFrequency: "monthly", priority: 0.75 },
   { path: "/home-value", changeFrequency: "monthly", priority: 0.75 },
   { path: "/privacy", changeFrequency: "yearly", priority: 0.35 },

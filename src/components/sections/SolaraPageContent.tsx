@@ -1,3 +1,4 @@
+import { AmenityMapSection } from "@/components/maps/AmenityMapSection";
 import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import {
@@ -115,6 +116,13 @@ export function SolaraPageContent() {
           </a>
         </p>
       </section>
+
+      <AmenityMapSection
+        heading="What's nearby Solara"
+        headingId="solara-nearby-heading"
+        lead="Filter groceries, parks, healthcare, and more around the Lennar Solara welcome center in North Las Vegas."
+        showStaticList={false}
+      />
 
       <section
         className="marketing-cta-band solara-homebuyer-cta"

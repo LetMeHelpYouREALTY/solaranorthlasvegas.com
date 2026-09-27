@@ -1,4 +1,5 @@
 import { MarketingShell } from "@/components/layout/MarketingShell";
+import { AmenityMapSection } from "@/components/maps/AmenityMapSection";
 import { MarketingArticle } from "@/components/sections/MarketingArticle";
 import { buildSubpageMetadata } from "@/lib/metadata";
 import { getAllNeighborhoodSlugs, getNeighborhoodBySlug } from "@/lib/neighborhoods-data";
@@ -47,6 +48,14 @@ export default async function NeighborhoodPage({ params }: Props) {
             {para}
           </p>
         ))}
+        {n.slug === "north-las-vegas" ? (
+          <AmenityMapSection
+            heading="What's near Lennar Solara"
+            headingId="nlv-nearby-heading"
+            lead="North Las Vegas buyers often compare Solara with other north-valley neighborhoods—start with groceries, parks, and healthcare on the map."
+            showStaticList={false}
+          />
+        ) : null}
         <section className="marketing-cta-band" aria-labelledby={`${n.slug}-cta`}>
           <h2 id={`${n.slug}-cta`}>Work with a local REALTOR</h2>
           <p>
