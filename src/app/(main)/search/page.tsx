@@ -1,4 +1,5 @@
 import { MarketingShell } from "@/components/layout/MarketingShell";
+import { AmenityMapSection } from "@/components/maps/AmenityMapSection";
 import { MarketingArticle } from "@/components/sections/MarketingArticle";
 import { buildSubpageMetadata } from "@/lib/metadata";
 import { PRIMARY_CONTACT_EMAIL, SITE_HOSTNAME } from "@/lib/site-contact";
@@ -48,8 +49,15 @@ export default function SearchPage() {
             <Link href="/buyers">Buyer roadmap</Link>
             {" · "}
             <Link href="/solara">New construction (Solara area)</Link>
+            {" · "}
+            <Link href="/amenities">Nearby amenities (Solara)</Link>
           </p>
         </section>
+        <AmenityMapSection
+          heading="Map errands near Solara"
+          headingId="search-nearby-heading"
+          showStaticList={false}
+        />
         <p style={{ fontSize: "0.9rem", opacity: 0.85 }}>
           Showing homes for sale on a website must follow brokerage rules. This page stays simple
           until any on-site search tool is approved and configured for this site.
