@@ -20,6 +20,7 @@ export default function SearchPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/search"
         breadcrumbCurrent="Search homes"
         h1="Find homes in the Las Vegas Valley"
         lead="Share your must-haves and I will help you narrow choices that fit your budget, commute, and timeline. We can start with email and go from there—saved searches and tours when you are ready."

@@ -1,9 +1,12 @@
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
+import { BreadcrumbJsonLd } from "@/components/seo/BreadcrumbJsonLd";
 import { SITE_NAME } from "@/lib/site-contact";
 import classNames from "classnames";
 import Link from "next/link";
 
 type MarketingArticleProps = {
+  /** Canonical path for this page, e.g. `/about` */
+  pagePath: string;
   breadcrumbCurrent: string;
   /** Optional middle segment, e.g. Neighborhoods hub before area name */
   breadcrumbMiddle?: { href: string; label: string };
@@ -18,6 +21,7 @@ type MarketingArticleProps = {
  * Shared inner layout for marketing pages: breadcrumb, single H1, optional lead, prose body.
  */
 export function MarketingArticle({
+  pagePath,
   breadcrumbCurrent,
   breadcrumbMiddle,
   h1,
@@ -25,8 +29,18 @@ export function MarketingArticle({
   children,
   contentTone = "default",
 }: MarketingArticleProps) {
+  const breadcrumbItems = [
+    { name: SITE_NAME, path: "/" },
+    ...(breadcrumbMiddle
+      ? [{ name: breadcrumbMiddle.label, path: breadcrumbMiddle.href }]
+      : []),
+    { name: breadcrumbCurrent, path: pagePath },
+  ];
+
   return (
-    <main
+    <>
+      <BreadcrumbJsonLd pagePath={pagePath} items={breadcrumbItems} />
+      <main
       id="page-top"
       className={classNames(
         "marketing-prose",
@@ -58,5 +72,6 @@ export function MarketingArticle({
       <RealScoutOfficeListingsSection />
       {children}
     </main>
+    </>
   );
 }

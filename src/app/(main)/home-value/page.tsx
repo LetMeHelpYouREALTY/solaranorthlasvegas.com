@@ -19,6 +19,7 @@ export default function HomeValuePage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/home-value"
         breadcrumbCurrent="Home value"
         h1="Home value: what a conversation covers"
         lead="Online estimates are starting points—not substitutes for market evidence, property condition, or an appraisal. Here is how I approach pricing and equity questions with sellers (and curious owners) in Nevada."

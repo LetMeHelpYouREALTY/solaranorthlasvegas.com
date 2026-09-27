@@ -47,6 +47,7 @@ export default function BuyersPage() {
     <MarketingShell>
       <MarketingFaqJsonLd items={BUYERS_FAQ_ITEMS} pagePath="/buyers" />
       <MarketingArticle
+        pagePath="/buyers"
         breadcrumbCurrent="Buyers"
         h1="Buying a home in North Las Vegas & the valley"
         lead="A calm, step-by-step path from first search to keys—with independent guidance from a Nevada REALTOR who knows local neighborhoods and new construction."

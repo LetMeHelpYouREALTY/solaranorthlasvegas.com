@@ -168,6 +168,39 @@ export function serializeFaqPageLd(items: HomeFaqItem[], pagePath: string): stri
   });
 }
 
+export type BreadcrumbSchemaItem = {
+  name: string;
+  path: string;
+};
+
+/** BreadcrumbList for inner routes — pair with visible marketing breadcrumbs. */
+export function buildBreadcrumbListJsonLd(
+  pagePath: string,
+  items: BreadcrumbSchemaItem[],
+): Record<string, unknown> {
+  const pageUrl = getCanonicalUrl(pagePath);
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: getCanonicalUrl(item.path),
+    })),
+  };
+}
+
+export function serializeBreadcrumbListLd(
+  pagePath: string,
+  items: BreadcrumbSchemaItem[],
+): string {
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    ...buildBreadcrumbListJsonLd(pagePath, items),
+  });
+}
+
 const SOLARA_PATH = "/solara" as const;
 
 /** WebPage, Place (community), BreadcrumbList for /solara — complements global graph in layout. */

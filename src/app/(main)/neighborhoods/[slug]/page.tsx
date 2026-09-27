@@ -38,6 +38,7 @@ export default async function NeighborhoodPage({ params }: Props) {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath={`/neighborhoods/${n.slug}`}
         breadcrumbMiddle={{ href: "/neighborhoods", label: "Neighborhoods" }}
         breadcrumbCurrent={n.shortName}
         h1={n.h1}
