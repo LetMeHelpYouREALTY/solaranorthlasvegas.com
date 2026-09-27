@@ -25,6 +25,7 @@ export default function AboutPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/about"
         breadcrumbCurrent="About"
         h1="About Dr. Jan Duffy"
         lead={`${AGENT.fullName} is a Nevada real estate licensee (${AGENT.licenseNumber}) with ${AGENT.brokerage}, focused on helping buyers and sellers make clear decisions in North Las Vegas and across the Las Vegas Valley.`}

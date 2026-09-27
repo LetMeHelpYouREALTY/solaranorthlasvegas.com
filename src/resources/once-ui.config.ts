@@ -100,7 +100,7 @@ const meta = {
     path: "/",
     title: `${SITE_NAME_SHORT} | North Las Vegas Real Estate`,
     description:
-      "North Las Vegas and Las Vegas Valley homes with Dr. Jan Duffy, REALTOR® — Berkshire Hathaway HomeServices Nevada Properties. Email for buying, selling, and local market guidance.",
+      "North Las Vegas and Las Vegas Valley homes with Dr. Jan Duffy, REALTOR®, BHHS Nevada Properties. Email for buying, selling, and local guidance.",
     image: "/images/og/home.jpg",
     canonical: SITE_ORIGIN,
     robots: "index,follow",

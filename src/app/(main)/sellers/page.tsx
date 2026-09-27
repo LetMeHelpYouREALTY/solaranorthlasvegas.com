@@ -23,6 +23,7 @@ export default function SellersPage() {
     <MarketingShell>
       <MarketingFaqJsonLd items={SELLERS_FAQ_ITEMS} pagePath="/sellers" />
       <MarketingArticle
+        pagePath="/sellers"
         breadcrumbCurrent="Sellers"
         h1="Selling your home in North Las Vegas & the valley"
         lead="A practical sequence from pricing through closing—focused on disclosure discipline, buyer-ready presentation, and negotiation that protects your goals."

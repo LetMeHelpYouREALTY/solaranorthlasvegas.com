@@ -25,6 +25,7 @@ export default function NeighborhoodsHubPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/neighborhoods"
         breadcrumbCurrent="Neighborhoods"
         h1="Neighborhood guides"
         lead="Explore area-by-area context across the Las Vegas Valley. When you are ready to narrow options, email for a conversation tailored to your commute, schools, and budget."

@@ -17,6 +17,7 @@ export default function PrivacyPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/privacy"
         contentTone="legal"
         breadcrumbCurrent="Privacy"
         h1="Privacy policy"

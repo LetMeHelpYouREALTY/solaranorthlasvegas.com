@@ -18,6 +18,7 @@ export default function DisclaimerPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/disclaimer"
         contentTone="legal"
         breadcrumbCurrent="Disclaimer"
         h1="Real estate disclaimer"

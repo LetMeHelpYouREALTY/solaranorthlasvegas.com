@@ -31,6 +31,7 @@ export default function ContactPage() {
   return (
     <MarketingShell>
       <MarketingArticle
+        pagePath="/contact"
         breadcrumbCurrent="Contact"
         h1="Contact Dr. Jan Duffy"
         lead="Reach out by email for buying, selling, or new construction questions in North Las Vegas and the Las Vegas Valley."
