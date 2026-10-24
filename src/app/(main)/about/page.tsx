@@ -10,12 +10,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return buildSubpageMetadata({
     titleAbsolute: "About Dr. Jan Duffy — Nevada REALTOR",
     description:
-      "Dr. Jan Duffy provides North Las Vegas and Las Vegas Valley real estate guidance with Berkshire Hathaway HomeServices Nevada Properties.",
+      "Dr. Jan Duffy, in real estate since 1983, provides North Las Vegas and Las Vegas Valley real estate guidance.",
     path: "/about",
     keywords: [
       "Dr. Jan Duffy REALTOR",
       "North Las Vegas real estate agent",
-      AGENT.brokerage,
+      
       SITE_HOSTNAME,
     ],
   });
@@ -28,12 +28,12 @@ export default function AboutPage() {
         pagePath="/about"
         breadcrumbCurrent="About"
         h1="About Dr. Jan Duffy"
-        lead={`${AGENT.fullName} is a Nevada real estate licensee (${AGENT.licenseNumber}) with ${AGENT.brokerage}, focused on helping buyers and sellers make clear decisions in North Las Vegas and across the Las Vegas Valley.`}
+        lead={`${AGENT.fullName} is a Top 1% Las Vegas REALTOR®, in real estate since 1983, focused on helping buyers and sellers make clear decisions in North Las Vegas and across the Las Vegas Valley.`}
       >
         <section className="about-agent-photo-section" aria-label="Dr. Jan Duffy">
           <img
             src={publicImageSrc(SITE_IMAGE_PATHS.aboutAgentPhoto)}
-            alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
+            alt={`${AGENT.fullName}, Nevada REALTOR`}
             width={480}
             height={480}
             className="about-agent-photo"

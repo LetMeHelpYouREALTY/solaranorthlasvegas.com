@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: SITE_NAME,
     short_name: SITE_NAME_SHORT,
     description:
-      "North Las Vegas real estate with Dr. Jan Duffy — Berkshire Hathaway HomeServices Nevada Properties.",
+      "North Las Vegas real estate with Dr. Jan Duffy, REALTOR®.",
     start_url: "/",
     display: "browser",
     background_color: "#0b0b0f",

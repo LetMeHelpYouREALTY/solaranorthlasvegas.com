@@ -12,7 +12,7 @@ export const SOLARA_FAQ_ITEMS: HomeFaqItem[] = [
   {
     question: "Why work with Dr. Jan Duffy if I’m interested in new construction?",
     answer:
-      "The on-site sales team represents the builder. Dr. Jan Duffy is a Nevada REALTOR® (license S.0197614.LLC) with Berkshire Hathaway HomeServices Nevada Properties and can represent your interests in North Las Vegas—helping you compare options, stay on top of paperwork, and ask the right questions before you commit.",
+      "The on-site sales team represents the builder. Dr. Jan Duffy is an independent Nevada REALTOR®, in real estate since 1983, and can represent your interests in North Las Vegas—helping you compare options, stay on top of paperwork, and ask the right questions before you commit.",
   },
   {
     question: "What is Solara in North Las Vegas?",
@@ -30,7 +30,7 @@ export const SOLARA_FAQ_ITEMS: HomeFaqItem[] = [
   {
     question: "Is this website the same as the builder or the Solara sales office?",
     answer:
-      "No. This site is for independent real estate guidance from Dr. Jan Duffy (Nevada license S.0197614.LLC), affiliated with Berkshire Hathaway HomeServices Nevada Properties. It is not the builder’s website.",
+      "No. This site is for independent real estate guidance from Dr. Jan Duffy, REALTOR®. It is not the builder’s website.",
   },
   {
     question: "Where is the Solara welcome center?",

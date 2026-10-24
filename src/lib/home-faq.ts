@@ -13,7 +13,7 @@ export const HOME_FAQ_ITEMS: HomeFaqItem[] = [
   {
     question: "What is Solara North Las Vegas?",
     answer:
-      `${SITE_NAME} is the full public brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice (${SITE_NAME_SHORT} is the short name). The practice is affiliated with Berkshire Hathaway HomeServices Nevada Properties.`,
+      `${SITE_NAME} is the full public brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice (${SITE_NAME_SHORT} is the short name).  Dr. Duffy has been in real estate since 1983.`,
   },
   {
     question: "Which areas do you serve?",
@@ -25,10 +25,7 @@ export const HOME_FAQ_ITEMS: HomeFaqItem[] = [
     answer:
       "Use DrDuffy@SolaraNorthLasVegas.com for general questions. For listing-related outreach, email DrDuffySells@SolaraNorthLasVegas.com.",
   },
-  {
-    question: "What is Dr. Jan Duffy's Nevada real estate license number?",
-    answer: "Nevada license S.0197614.LLC.",
-  },
+  
   {
     question: "Does this site provide legal or tax advice?",
     answer:

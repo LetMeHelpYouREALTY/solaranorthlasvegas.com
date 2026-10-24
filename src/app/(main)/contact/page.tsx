@@ -75,12 +75,6 @@ export default function ContactPage() {
             </p>
           </section>
         ) : null}
-        <section className="content-panel" aria-labelledby="license-heading">
-          <h2 id="license-heading">License</h2>
-          <p>
-            {AGENT.fullName} · Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
-          </p>
-        </section>
         <section className="marketing-cta-band" aria-labelledby="next-heading">
           <h2 id="next-heading">Explore next</h2>
           <p>

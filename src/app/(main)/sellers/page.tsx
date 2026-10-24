@@ -97,9 +97,7 @@ export default function SellersPage() {
             <Link href="/contact">Contact</Link>
           </p>
         </section>
-        <p style={{ lineHeight: 1.65 }}>
-          {AGENT.fullName} · {AGENT.licenseNumber} · {AGENT.brokerage}
-        </p>
+        
       </MarketingArticle>
       <MarketingFaq
         items={SELLERS_FAQ_ITEMS}

@@ -41,10 +41,10 @@ export function SiteFooter() {
           </ul>
         </nav>
         <p style={{ margin: 0, fontWeight: 600 }}>{SITE_NAME}</p>
+                <p style={{ margin: 0 }}>{AGENT.fullName}, REALTOR®</p>
         <p style={{ margin: 0 }}>
-          {AGENT.fullName} · Nevada license {AGENT.licenseNumber}
+          {AGENT.brokerage} since September 2008 · License {AGENT.licenseNumber}
         </p>
-        <p style={{ margin: 0 }}>{AGENT.brokerage}</p>
         {postal ? <p style={{ margin: 0 }}>{formatPostalAddressLine(postal)}</p> : null}
         {phone ? (
           <p style={{ margin: 0 }}>

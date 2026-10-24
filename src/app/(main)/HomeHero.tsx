@@ -51,8 +51,7 @@ export function HomeHero() {
             <h1 className="home-hero-h1">North Las Vegas real estate with Dr. Jan Duffy</h1>
 
             <p className="home-hero-lead">
-              Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and
-              strategy with Berkshire Hathaway HomeServices Nevada Properties.
+              Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and strategy from a REALTOR® in real estate since 1983.
             </p>
 
             <p className="home-hero-copy">
@@ -67,7 +66,7 @@ export function HomeHero() {
             <div className="home-hero-photo-wrap">
               <Image
                 src={SITE_IMAGE_PATHS.homeHeroAgent}
-                alt={`${AGENT.fullName}, Nevada REALTOR with ${AGENT.brokerage}`}
+                alt={`${AGENT.fullName}, Nevada REALTOR`}
                 width={208}
                 height={208}
                 priority
@@ -116,8 +115,8 @@ export function HomeHero() {
               </a>
             </p>
 
-            <p className="home-hero-license">
-              Nevada license {AGENT.licenseNumber} · {AGENT.brokerage}
+                        <p className="home-hero-license">
+              Top 1% Las Vegas REALTOR® · In real estate since 1983
             </p>
           </div>
         </div>
