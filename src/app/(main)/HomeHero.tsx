@@ -2,6 +2,11 @@ import { CalendlyPopupLink } from "@/components/calendly/CalendlyPopupLink";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SITE_IMAGE_PATHS } from "@/lib/site-images";
 import { AGENT, CONTACT_EMAILS, SITE_NAME, getOptionalGbpMapsUrl } from "@/lib/site-contact";
+import {
+  LENNAR_SOLARA_OFFICIAL_URL,
+  SOLARA_HOME_H1,
+  SOLARA_WELCOME_ADDRESS,
+} from "@/lib/solara-page";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,19 +53,30 @@ export function HomeHero() {
               </div>
             </div>
 
-            <h1 className="home-hero-h1">North Las Vegas real estate with Dr. Jan Duffy</h1>
+            <h1 className="home-hero-h1">{SOLARA_HOME_H1}</h1>
 
             <p className="home-hero-lead">
               Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and strategy from a REALTOR® in real estate since 1983.
             </p>
 
             <p className="home-hero-copy">
-              Curious about{" "}
+              <strong>Lennar Solara</strong> is a gated townhome community in North Las Vegas (
+              {SOLARA_WELCOME_ADDRESS.postalCode}). {AGENT.fullName} offers independent buyer and
+              seller guidance—separate from the builder’s sales office. Confirm builder pricing,
+              hours, and inventory on{" "}
+              <a
+                href={LENNAR_SOLARA_OFFICIAL_URL}
+                className="home-hero-inline-link"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Lennar’s official Solara page
+              </a>
+              , or start with{" "}
               <Link href="/solara" className="home-hero-inline-link">
-                new construction in North Las Vegas (including the Solara area)
+                her Solara new-home guide
               </Link>
-              ? Dr. Jan Duffy can walk you through what to expect—separate from the builder’s sales
-              team.
+              .
             </p>
 
             <div className="home-hero-photo-wrap">

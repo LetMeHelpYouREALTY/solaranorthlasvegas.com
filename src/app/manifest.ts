@@ -1,12 +1,13 @@
-import { SITE_NAME, SITE_NAME_SHORT } from "@/lib/site-contact";
+import { SITE_NAME_SHORT } from "@/lib/site-contact";
+import { SOLARA_HOME_TITLE_ABSOLUTE } from "@/lib/solara-page";
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: SITE_NAME,
+    name: SOLARA_HOME_TITLE_ABSOLUTE,
     short_name: SITE_NAME_SHORT,
     description:
-      "North Las Vegas real estate with Dr. Jan Duffy, REALTOR®.",
+      "Solara North Las Vegas Lennar townhomes with independent REALTOR® guidance from Dr. Jan Duffy.",
     start_url: "/",
     display: "browser",
     background_color: "#0b0b0f",

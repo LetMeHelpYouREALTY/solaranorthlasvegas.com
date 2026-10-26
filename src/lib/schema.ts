@@ -94,9 +94,13 @@ export function buildRootJsonLdGraph(): Record<string, unknown>[] {
       ...(postal ? { workLocation: { "@id": `${SITE_ORIGIN}/#localbusiness` } } : {}),
       areaServed: [
         {
-          "@type": "City",
-          name: "North Las Vegas",
-          containedInPlace: { "@type": "State", name: "Nevada" },
+          "@type": "Place",
+          name: "Solara",
+          containedInPlace: {
+            "@type": "City",
+            name: "North Las Vegas",
+            containedInPlace: { "@type": "State", name: "Nevada" },
+          },
         },
         {
           "@type": "AdministrativeArea",

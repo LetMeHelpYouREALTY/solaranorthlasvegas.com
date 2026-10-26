@@ -1,5 +1,6 @@
 // Canonical site URL and contact — see src/lib/site-contact.ts
 import { PRIMARY_CONTACT_EMAIL, SITE_NAME, SITE_NAME_SHORT, SITE_ORIGIN } from "@/lib/site-contact";
+import { SOLARA_HOME_TITLE_ABSOLUTE } from "@/lib/solara-page";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -98,9 +99,9 @@ const effects = {
 const meta = {
   home: {
     path: "/",
-    title: `${SITE_NAME_SHORT} | North Las Vegas Real Estate`,
+    title: SOLARA_HOME_TITLE_ABSOLUTE,
     description:
-      "North Las Vegas and Las Vegas Valley homes with Dr. Jan Duffy, REALTOR®. Email for buying, selling, and local guidance.",
+      "Gated Lennar Solara townhomes in North Las Vegas. Dr. Jan Duffy, REALTOR®, offers independent buyer/seller guidance—not the builder sales office. Email us.",
     image: "/images/og/home.jpg",
     canonical: SITE_ORIGIN,
     robots: "index,follow",

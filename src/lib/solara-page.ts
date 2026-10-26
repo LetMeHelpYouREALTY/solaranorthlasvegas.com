@@ -28,7 +28,14 @@ export function formatSolaraWelcomeAddressLine(): string {
 }
 
 /** When community/pricing copy was last reviewed (update when you refresh facts). */
-export const SOLARA_CONTENT_REVIEWED_ON = "2026-04-04" as const;
+export const SOLARA_CONTENT_REVIEWED_ON = "2026-10-26" as const;
+
+/** Homepage + PWA manifest — aligned with site angle (Lennar townhomes: lennar.com Solara page, 2026-10-26). */
+export const SOLARA_HOME_TITLE_ABSOLUTE =
+  "Solara North Las Vegas Townhomes | Dr. Jan Duffy" as const;
+
+export const SOLARA_HOME_H1 =
+  "Solara North Las Vegas Real Estate with Dr. Jan Duffy" as const;
 
 export const SOLARA_PAGE_TITLE_ABSOLUTE =
   `Lennar Solara North Las Vegas — new homes & REALTOR® help | ${SITE_NAME}` as const;
