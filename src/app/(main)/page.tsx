@@ -1,6 +1,7 @@
 import { CalendlyShellStrip } from "@/components/calendly/CalendlyShellStrip";
 import { HomeFaq } from "@/components/sections/HomeFaq";
 import { SiteFooter } from "@/components/sections/SiteFooter";
+import { AmenityMapSection } from "@/components/maps/AmenityMapSection";
 import { RealScoutOfficeListingsSection } from "@/components/widgets/RealScoutOfficeListingsSection";
 import { HomeFaqJsonLd } from "@/components/seo/HomeFaqJsonLd";
 import { buildHomeMetadata } from "@/lib/metadata";
@@ -23,6 +24,14 @@ export default function HomePage() {
       <HomeFaqJsonLd />
       <HomeHero />
       <RealScoutOfficeListingsSection compactTop />
+      <div style={{ maxWidth: "48rem", margin: "0 auto", padding: "0 1.5rem" }}>
+        <AmenityMapSection
+          heading="Life near Solara"
+          headingId="home-nearby-heading"
+          lead="Explore groceries, parks, healthcare, and more around Lennar Solara in North Las Vegas."
+          showStaticList={false}
+        />
+      </div>
       <HomeFaq />
       <CalendlyShellStrip />
       <SiteFooter />
