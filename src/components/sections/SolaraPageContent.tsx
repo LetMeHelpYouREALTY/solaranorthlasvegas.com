@@ -38,7 +38,7 @@ export function SolaraPageContent() {
         <p className="marketing-lead">
           <strong>Lennar Solara</strong> in North Las Vegas: <strong>{AGENT.fullName}</strong> offers
           independent REALTOR® guidance if you are buying or selling—including around the{" "}
-          <strong>Solara</strong> townhome community. She is not the builder’s sales office; she is an independent Nevada REALTOR®, in real estate since 1983.
+          <strong>Solara</strong> townhome community. She is not the builder’s sales office; she is an independent Nevada REALTOR®, licensed since 2008 · 35 years in Las Vegas.
         </p>
 
         <p style={{ margin: "0 0 1rem", lineHeight: 1.65 }}>
