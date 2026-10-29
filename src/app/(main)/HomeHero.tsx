@@ -56,7 +56,7 @@ export function HomeHero() {
             <h1 className="home-hero-h1">{SOLARA_HOME_H1}</h1>
 
             <p className="home-hero-lead">
-              Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and strategy from a REALTOR® in real estate since 1983.
+              Local expertise for North Las Vegas and the Las Vegas Valley — buying, selling, and strategy from a REALTOR® licensed since 2008 · 35 years in Las Vegas.
             </p>
 
             <p className="home-hero-copy">
@@ -132,7 +132,7 @@ export function HomeHero() {
             </p>
 
                         <p className="home-hero-license">
-              Top 1% Las Vegas REALTOR® · In real estate since 1983
+              Las Vegas REALTOR® · Licensed since 2008 · 35 years in Las Vegas
             </p>
           </div>
         </div>

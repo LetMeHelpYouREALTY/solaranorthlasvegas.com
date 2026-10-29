@@ -13,7 +13,7 @@ export const HOME_FAQ_ITEMS: HomeFaqItem[] = [
   {
     question: "What is Solara North Las Vegas?",
     answer:
-      `${SITE_NAME} is the full public brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice (${SITE_NAME_SHORT} is the short name).  Dr. Duffy has been in real estate since 1983.`,
+      `${SITE_NAME} is the full public brand for Dr. Jan Duffy's North Las Vegas and Las Vegas Valley real estate practice (${SITE_NAME_SHORT} is the short name).  Dr. Duffy has been licensed since 2008 · 35 years in Las Vegas.`,
   },
   {
     question: "Which areas do you serve?",
