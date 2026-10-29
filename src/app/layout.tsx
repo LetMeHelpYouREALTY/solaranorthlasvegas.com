@@ -12,7 +12,6 @@ import { SITE_ORIGIN } from "@/lib/site-contact";
 import { dataStyle, effects, fonts, style } from "@/resources/once-ui.config";
 import { Background, Column, Flex, type SpacingToken, type opacity } from "@once-ui-system/core";
 import type { Metadata, Viewport } from "next";
-import WidgetTracker from './widget-tracker';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
@@ -155,7 +154,6 @@ export default function RootLayout({
             }}
           />
           {children}
-          <WidgetTracker />
         </Column>
       </Providers>
     </Flex>
