@@ -12,6 +12,8 @@ import { SITE_ORIGIN } from "@/lib/site-contact";
 import { dataStyle, effects, fonts, style } from "@/resources/once-ui.config";
 import { Background, Column, Flex, type SpacingToken, type opacity } from "@once-ui-system/core";
 import type { Metadata, Viewport } from "next";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_ORIGIN),
@@ -154,6 +156,8 @@ export default function RootLayout({
             }}
           />
           {children}
+          <VercelAnalytics />
+          <VercelSpeedInsights />
         </Column>
       </Providers>
     </Flex>
